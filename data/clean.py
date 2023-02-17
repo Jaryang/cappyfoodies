@@ -52,7 +52,7 @@ def clean_pop(filename):
     '''
     take in the income data downloaded from census bureau and clean it
     '''
-    pop_data = pd.read_csv("population.csv")
+    pop_data = pd.read_csv(filename)
     pop_data['Label (Grouping)'] = pop_data['Label (Grouping)'].str.strip()
     df = pop_data.filter(regex = '!Estimate')
     df.insert(0, 'Label', pop_data['Label (Grouping)'])

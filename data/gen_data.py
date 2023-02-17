@@ -29,6 +29,7 @@ def gen_top_eth(filename):
             if x != 0:
                 race = label[x]
                 race_lst.append((race, value[x]))
+        
         top_5[key] = race_lst
 
     with open('top_race.csv', 'w') as csv_file:  
@@ -46,11 +47,18 @@ def gen_data():
     gen_top_eth("population.csv")
 
     df_race = pd.read_csv('top_race.csv')
+
     print(df_race)
 
     df_1 = pd.merge(df_edu, df_inc, on = 'NAME', how = 'left')
+
     df_2 = pd.merge(df_1, df_fdstamp, on = 'NAME', how = 'left')
-    df_3 = pd.concat([df_2, df_race], axis = 1 )
+
+    df_2.drop_duplicates(subset=['NAME'], keep='first', inplace=True, ignore_index=True)
+
+    df_3 = pd.concat([df_2, df_race], axis = 1)
+
+    # return df_3.drop(df_3.iloc[:,7], inplace = True)
 
     df_3.to_csv("final_set.csv")
 
