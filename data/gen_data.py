@@ -48,8 +48,6 @@ def gen_data():
 
     df_race = pd.read_csv('top_race.csv')
 
-    print(df_race)
-
     df_1 = pd.merge(df_edu, df_inc, on = 'NAME', how = 'left')
 
     df_2 = pd.merge(df_1, df_fdstamp, on = 'NAME', how = 'left')
