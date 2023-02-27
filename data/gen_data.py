@@ -60,5 +60,5 @@ def gen_data():
 
     # return df_3.drop(df_3.iloc[:,7], inplace = True)
 
-    df_3.to_csv("final_set.csv")
+    df_3.to_csv("demo_data.csv")
 
