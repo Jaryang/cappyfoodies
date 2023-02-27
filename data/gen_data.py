@@ -23,7 +23,7 @@ def gen_top_eth(filename):
     for key, value in data.items():
         if key == 'Label':
             continue
-        lst = sorted(range(len(value)), key=lambda i: value[i])[-5:]
+        lst = sorted(range(len(value)), key=lambda i: value[i])[-6:]
         race_lst = []
         for x in lst[: : -1]:
             if x != 0:
@@ -57,6 +57,8 @@ def gen_data():
     df_2.drop_duplicates(subset=['NAME'], keep='first', inplace=True, ignore_index=True)
 
     df_3 = pd.concat([df_2, df_race], axis = 1)
+
+    df_3.drop(df_3.columns[-2], axis = 1)
 
     # return df_3.drop(df_3.iloc[:,7], inplace = True)
 
