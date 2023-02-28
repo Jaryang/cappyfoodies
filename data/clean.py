@@ -134,8 +134,9 @@ def clean_rest(filename):
         zipcode = restaurant['zip_code']
         if zipcode not in counter:
             counter[zipcode] ={}
-        relabel_lst = relabel(cat_lst)
-        for type in relabel_lst:
+        new_category = relabel(cat_lst)
+        restaurant['new_labels'] = new_category
+        for type in new_category:
             counter[zipcode][type] = counter[zipcode].get(type, 0) + 1
 
     top_3_food = {}
@@ -146,8 +147,8 @@ def clean_rest(filename):
         sum_lst.extend(lst)
         top_3_food[key] = lst
     
-    for restaurant in data:
-        cat_lst = eval(restaurant['categories'])
+    for restaurant in data[0:6]:
+        cat_lst = restaurant['new_labels']
         zipcode = restaurant['zip_code']
         new_cat = top_3_food[zipcode]
         food_label = find_cat(cat_lst, new_cat)
@@ -161,9 +162,9 @@ def clean_rest(filename):
             for head in rest:
                 headers.append(head)
 
-    with open('res_label.csv', 'w', newline = "") as csv_file:  
-        writer = csv.DictWriter(csv_file, fieldnames=headers)
-        writer.writeheader()
-        for row in data:
-            writer.writerow(row)
+    # with open('res_label.csv', 'w', newline = "") as csv_file:  
+    #     writer = csv.DictWriter(csv_file, fieldnames=headers)
+    #     writer.writeheader()
+    #     for row in data:
+    #         writer.writerow(row)
 
