@@ -41,12 +41,15 @@ def gen_top_eth(filename):
 def gen_data():
 
     df_edu = clean.clean_edu("education.csv")
+    print(type(df_edu['NAME']))
     df_fdstamp = clean.clean_foodstamp("food stamp.csv")
     df_inc = clean.clean_income("income.csv")
 
     gen_top_eth("population.csv")
 
     df_race = pd.read_csv('top_race.csv')
+    df_race["NAME"].astype(str)
+    print(type(df_race['NAME']))
 
     df_1 = pd.merge(df_edu, df_inc, on = 'NAME', how = 'left')
 
@@ -57,11 +60,11 @@ def gen_data():
     df_3 = pd.concat([df_2, df_race], axis = 1)
 
     #finalizing the final dataset
-    final = df_3.drop(df_3.columns[-2], axis = 1)
-    print(final.info)
+    # final = df_3.drop(df_3.columns[-2], axis = 1)
+    print(df_3)
 
 
     # return df_3.drop(df_3.iloc[:,7], inplace = True)
 
-    final.to_csv("demo_data.csv")
+    df_3.to_csv("demo_data.csv")
 

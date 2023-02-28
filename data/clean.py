@@ -82,7 +82,7 @@ def clean_pop(filename):
     df_1 = df.drop([0,2,3,4,7,12])
     data = df_1.to_dict('series')
 
-    for key, val in data.items():
+    for key, _ in data.items():
         data[key] = data[key].tolist()
 
     return data
