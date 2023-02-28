@@ -56,9 +56,12 @@ def gen_data():
 
     df_3 = pd.concat([df_2, df_race], axis = 1)
 
-    df_3.drop(df_3.columns[-2], axis = 1)
+    #finalizing the final dataset
+    final = df_3.drop(df_3.columns[-2], axis = 1)
+    print(final.info)
+
 
     # return df_3.drop(df_3.iloc[:,7], inplace = True)
 
-    df_3.to_csv("demo_data.csv")
+    final.to_csv("demo_data.csv")
 

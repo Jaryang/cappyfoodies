@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+import csv
 
 def clean_edu(filename):
     '''
@@ -64,3 +65,66 @@ def clean_pop(filename):
         data[key] = data[key].tolist()
 
     return data
+
+def relabel(cat_lst):
+    cate_dct = {
+    'Bakeries' : ["Bakeries", "Piadina", "Pretzels", "Bagels", 'Patisserie/Cake Shop'],
+    'Alcohol' : ['Cocktail Bars','Brewpubs','Beer Bar','Whiskey Bars','Wine Bars','Beer, Wine & Spirits', 'Pubs', 'Bars','Dive Bars', \
+                 'Sports Bars','Beer', 'Wine & Spirits', 'Breweries', 'Cideries', 'Distilleries', 'Meaderies', 'Wineries', 'Wine Tasting Room'],
+    'Coffee_Tea' : ['Coffee & Tea','Coffee Roasteries', 'Tea Rooms,Bubble Tea', 'Cafes'],
+    'Dessert' : ['Candy Stores','Pancakes','Desserts','Chimney Cakes','Cupcakes','Custom Cakes','Donuts', 'Gelato', 'Honey', \
+                 'Ice Cream & Frozen Yogurt', 'Milkshake Bars', 'Shaved Ice', 'Shaved Snow', 'Candy Stores', 'Chocolatiers & Shops', 'Macarons'],
+    'Grocery' : ['Imported Food', 'International Grocery','Organic Stores','Fruits & Veggies','Health Markets','Convenience Stores','Farmers Market','CSA'],
+    'Beverage' : ['Juice Bars & Smoothies', 'Acai Bowls','Kombucha', 'Water Stores', 'Bubble Tea'],
+    'Fast_Food': ['Burgers', 'Chicken Wings','Fast Food','Pizza', 'Hot Dogs', 'Sandwiches'],
+    'Specialty_Store' : ['Cheese Shops','Herbs & Spices','Olive Oil','Pasta Shops','Popcorn Shops','Tofu Shops','Empanadas'],
+    'Meat_Shop' : ['Seafood Markets', 'Butcher', 'Smokehouse'],
+    'Regional' : ['Cuban','Venezuelan','Honduran','Vietnamese','Afghan','African','Bulgarian','Colombian', 'Japanese', 'Laotian', 'Latin American', \
+                  'Mediterranean', 'Mexican', 'Middle Eastern', 'Modern European', 'New Mexican Cuisine', 'Pakistani','Pan Asian', 'Polish', 'Puerto Rican', 'Scottish', \
+                  'Southern','Thai', 'Turkish','Chinese', 'Czech','Filipino','French','Greek', 'Hawaiian', 'Indian', 'Irish', 'Korean','German','Italian',\
+                  'Japanese','Czech','American (Traditional)','American (New)','Asian Fusion', 'Cajun/Creole','Cantonese','Caribbean']
+    }
+    Not_Food = ['Kids Activities','Music Venues','Arcades','Venues & Event Spaces','Party & Event Planning','Comedy Clubs','Bookstores','Lounges', 'Vape Shops','Gift Shops']
+    for label in cat_lst:
+        if label in Not_Food:
+            cat_lst.remove(label)
+
+    for i, label in enumerate(cat_lst):
+        for category, lst in cate_dct.items():
+            if label in lst:
+                cat_lst[i] = category
+        
+    return list(set(cat_lst))
+
+def clean_rest(filename):
+
+    with open(filename) as f:
+        reader = csv.DictReader(f)
+        data = []
+        for row in reader:
+            data.append(row)
+    
+    counter = {}
+
+    for restaurant in data:
+        cat_lst = eval(restaurant['categories'])
+        zipcode = restaurant['zip_code']
+        if zipcode not in counter:
+            counter[zipcode] ={}
+        relabel_lst = relabel(cat_lst)
+        for type in relabel_lst:
+            counter[zipcode][type] = counter[zipcode].get(type, 0) + 1
+
+
+    top_5_food = {}
+    sum_lst = []
+
+    for key, value in counter.items():
+        #change to modify top ones to have
+        lst = sorted(value, key=lambda i: value[i])[-3:]
+        sum_lst.extend(lst)
+        top_5_food[key] = lst
+    
+    return top_5_food
+
+
