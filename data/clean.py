@@ -147,7 +147,7 @@ def clean_rest(filename):
         sum_lst.extend(lst)
         top_3_food[key] = lst
     
-    for restaurant in data[0:6]:
+    for restaurant in data:
         cat_lst = restaurant['new_labels']
         zipcode = restaurant['zip_code']
         new_cat = top_3_food[zipcode]
@@ -162,9 +162,9 @@ def clean_rest(filename):
             for head in rest:
                 headers.append(head)
 
-    # with open('res_label.csv', 'w', newline = "") as csv_file:  
-    #     writer = csv.DictWriter(csv_file, fieldnames=headers)
-    #     writer.writeheader()
-    #     for row in data:
-    #         writer.writerow(row)
+    with open('res_label.csv', 'w', newline = "") as csv_file:  
+        writer = csv.DictWriter(csv_file, fieldnames=headers)
+        writer.writeheader()
+        for row in data:
+            writer.writerow(row)
 
