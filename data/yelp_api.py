@@ -1,6 +1,7 @@
 import json
 import requests
 
+#list of zip codes in Cook County
 cook_zip = ['60629',
  '60618',
  '60639',
@@ -235,35 +236,71 @@ cook_zip = ['60629',
 API_KEY = 'g5LKgbWTyQWTEkfnknhTvgtiDMUKzp7_0v9ofFnucn7Lheiq2hTFNn2H8JRSM--SBq5RaJaKVgRqZBrJsOnWsZFvaFTAq96ADWOY5Dany9m6n7AGIzfo4cMJNOnrY3Yx'
 BUS_ENDPOINT = 'https://api.yelp.com/v3/businesses/search'
 HEADERS = {'Authorization': 'bearer %s' % API_KEY}
+#Yelp labels each restaurant's price level with the following $, $$, $$$, or $$$$, which translates to 1,2,3,4 in their API
 price = [1,2,3,4]
 
 def get_businesses():
-    business_data = []
-    for zipcode in cook_zip:
-        for p in price:
-            PARAMETERS = {'limit': 50, 'categories': 'Restaurants', 'location': zipcode, 'price': p, 'sort_by': 'rating'}
-            response = requests.get(url = BUS_ENDPOINT,
-                           params = PARAMETERS,
-                           headers = HEADERS)
-            try:
-                business_data += response.json()["businesses"]
-            except Exception:
-                pass
-    business_data = pd.DataFrame.from_dict(business_data)
-    business_data.drop_duplicates(subset=['id'])
-    business_data.to_csv('yelp_businesses.csv')
-    return business_data
+ '''
+ This function uses the Yelp Fusion API to get information about restaurants at differing price points in Cook County.
+ 
+ Outputs (CSV file):
+  yelp_businesses.csv, which is a CSV file that lists the restaurant in each zipcode.
+ '''
+ business_data = []
+ #The Yelp Fusion's limit for calling businesses is 50, so in order to maximize the number of restaurants, 
+ #we loop through each zipcode and each price level
+ 
+ for zipcode in cook_zip:
+     for p in price:
+         #The 'rating' sort according to Yelp, "is not strictly sorted by the rating value, but by an adjusted rating 
+         #value that takes into account the number of ratings"
+         PARAMETERS = {'limit': 50, 'categories': 'Restaurants', 'location': zipcode, 'price': p, 'sort_by': 'rating'}
+         response = requests.get(url = BUS_ENDPOINT,
+                        params = PARAMETERS,
+                        headers = HEADERS)
+      
+         #Adding the dictionary of the business' information to the list
+         try:
+             business_data += response.json()["businesses"]
+          
+         #If there are no restaurants in the zipcode or at a certain price level, then pass the loop
+         except Exception:
+             pass
+          
+ business_data = pd.DataFrame.from_dict(business_data)
+ 
+ #Removing the overlapping restaurants that appeared in the API calls
+ business_data.drop_duplicates(subset=['id'])
+ 
+ business_data.to_csv('yelp_businesses.csv')
+ return business_data
   
-  def get_reviews(bus_data):
-    final_dic = {}
-    for business in bus_data:
-        REVIEWS_ENDPOINT = "https://api.yelp.com/v3/businesses/{}/reviews".format(business['id'])
-        response = requests.get(url=REVIEWS_ENDPOINT,
-               headers = HEADERS)
-        try:
-            final_dic[business['id']] = response.json()['reviews']
-        except Exception:
-            pass
-    with open("uncleaned_yelp_reviews.json", "w") as outfile:
-        json.dump(final_dic, outfile)
-    return final_dic
+def get_reviews(bus_data):
+ '''
+ This function uses the Yelp Fusion API to get the reviews for restaurants in Cook County 
+ 
+ Inputs:
+  bus_data (Pandas DataFrame): DataFrame of the restaurants in Cook County and their information
+  
+ Outputs:
+  final_dic: a dictionary with the key being the unique ID for each restaurant and the values being the three reviews
+  from Yelp's Fusion API
+  uncleaned_yelp_reviews.json: a JSON file that contains all the reviews within the above dictionary.
+ '''
+ final_dic = {}
+ 
+ #Looping through the DataFrame and making a call to Yelp's API to get reviews for each restaurant
+ for business in bus_data:
+     REVIEWS_ENDPOINT = "https://api.yelp.com/v3/businesses/{}/reviews".format(business['id'])
+     response = requests.get(url=REVIEWS_ENDPOINT,
+            headers = HEADERS)
+     try:
+         final_dic[business['id']] = response.json()['reviews']
+       
+     #If there are no reviews for the restaurant, then pass the loop
+     except Exception:
+         pass
+      
+ with open("uncleaned_yelp_reviews.json", "w") as outfile:
+     json.dump(final_dic, outfile)
+ return final_dic
