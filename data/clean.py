@@ -26,14 +26,19 @@ Sub_Category = ['Halal','Noodles','Tacos', 'Sushi Bars','Soul Food', 'Dim Sum', 
 def clean_edu(filename):
     '''
     take in the education data downloaded from census bureau and clean it
+    Input:
+        filename (string)
+    
+    Output:
+        df_edu (pandas dataframe)
     '''
     edu_data = pd.read_csv(filename)
 
+    #getting zipcode and the estimated number 
     df_edu = edu_data.filter(regex = "E$")
-    df_edu = df_edu.drop([0])
     df_edu["NAME"] = df_edu['NAME'].str.extract(r'(\d{5})$')
 
-    #calculate percentage of people with bachelor or higher degress
+    #calculate percentage of people with bachelor or higher degress among population over 25
     df_edu = df_edu.rename(columns={'S1501_C01_006E': 'pop_over_25', 'S1501_C01_015E': '25_bach'})
     df_edu['per_bachelor'] = df_edu['25_bach'].astype(int)/df_edu['pop_over_25'].astype(int)
     df_edu.drop(df_edu.iloc[:, 1:-1], inplace=True, axis=1)
