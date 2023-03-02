@@ -275,7 +275,7 @@ def get_businesses():
  business_data.to_csv('yelp_businesses.csv')
  return business_data
   
-def get_reviews(bus_data, first_round=True, round_num=''):
+def get_reviews(bus_data=None, first_round=True, round_num=''):
  '''
  This function uses the Yelp Fusion API to get the reviews for restaurants in Cook County 
  
@@ -291,9 +291,10 @@ def get_reviews(bus_data, first_round=True, round_num=''):
  '''
  final_dic = {}
  
- #Getting the business IDs of yelp businesses
+ #Getting the business IDs of yelp businesses in the first round
  if first_round:
-        bus_data = bus_data['id'].tolist()
+     business_data = pd.read_csv('yelp_businesses.csv', index_col=0)  
+     bus_data = business_data['id'].tolist()
  
  #Looping through the list of business IDS and making a call to Yelp's API to get reviews for each restaurant
  for bus_id in bus_data:
@@ -336,7 +337,7 @@ def get_more_revs(round_num):
     bus_without_revs = list(set(business_ids) - set(bus_with_revs))
     
     #Getting the reviews and adding them to the original dictionary. 
-    more_revs = get_reviews(bus_data1, False, round_num)
+    more_revs = get_reviews(bus_without_revs, False, round_num)
     rev_dic.update(more_revs)
     
     #Overwriting the file to include the yelp reviews from past reviews and the current one
