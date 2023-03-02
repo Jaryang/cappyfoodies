@@ -275,12 +275,14 @@ def get_businesses():
  business_data.to_csv('yelp_businesses.csv')
  return business_data
   
-def get_reviews(bus_data):
+def get_reviews(bus_data, first_round=True, round_num=''):
  '''
  This function uses the Yelp Fusion API to get the reviews for restaurants in Cook County 
  
  Inputs:
   bus_data (Pandas DataFrame): DataFrame of the restaurants in Cook County and their information
+  first_round (boolean): True if this is the first round of API calls, False otherwise
+  round_num (str): String of the current round number 
   
  Outputs:
   final_dic: a dictionary with the key being the unique ID for each restaurant and the values being the three reviews
@@ -289,13 +291,17 @@ def get_reviews(bus_data):
  '''
  final_dic = {}
  
- #Looping through the DataFrame and making a call to Yelp's API to get reviews for each restaurant
- for business in bus_data:
-     REVIEWS_ENDPOINT = "https://api.yelp.com/v3/businesses/{}/reviews".format(business['id'])
+ #Getting the business IDs of yelp businesses
+ if first_round:
+        bus_data = bus_data['id'].tolist()
+ 
+ #Looping through the list of business IDS and making a call to Yelp's API to get reviews for each restaurant
+ for bus_id in bus_data:
+     REVIEWS_ENDPOINT = "https://api.yelp.com/v3/businesses/{}/reviews".format(bus_id)
      response = requests.get(url=REVIEWS_ENDPOINT,
             headers = HEADERS)
      try:
-         final_dic[business['id']] = response.json()['reviews']
+         final_dic[bus_id] = response.json()['reviews']
        
      #If there are no reviews for the restaurant, then pass the loop
      except Exception:
@@ -304,3 +310,35 @@ def get_reviews(bus_data):
  with open("uncleaned_yelp_reviews.json", "w") as outfile:
      json.dump(final_dic, outfile)
  return final_dic
+
+def get_more_revs(round_num):
+    '''
+    This function gets the reviews for restaurants that were missed in previous
+    rounds because of the API limit.
+    
+    Inputs:
+        round_num(string): String of the current round number 
+    
+    Outputs:
+        'uncleaned_yelp_reviews.json', which is the overwritten JSON file that 
+        contains all the reviews gotten in the current and past rounds of API 
+        calls 
+    '''
+   #Loading the yelp reviews from previous rounds
+    with open("uncleaned_yelp_reviews.json", "r") as file:
+        rev_dic = json.load(file)
+    
+    #Getting the business IDs that we already have reviews for and subtracting
+    #it from the total list of business IDs to find the businesses we don't have reviews for
+    bus_with_revs = list(rev_dic.keys())
+    business_data = pd.read_csv('yelp_businesses.csv', index_col=0)
+    business_ids = business_data['id'].tolist()
+    bus_without_revs = list(set(business_ids) - set(bus_with_revs))
+    
+    #Getting the reviews and adding them to the original dictionary. 
+    more_revs = get_reviews(bus_data1, False, round_num)
+    rev_dic.update(more_revs)
+    
+    #Overwriting the file to include the yelp reviews from past reviews and the current one
+    with open("uncleaned_yelp_reviews.json", "w") as outfile:
+        json.dump(rev_dic, outfile)
