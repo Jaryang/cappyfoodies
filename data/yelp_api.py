@@ -280,7 +280,7 @@ def get_reviews(bus_data=None, first_round=True, round_num=''):
  This function uses the Yelp Fusion API to get the reviews for restaurants in Cook County 
  
  Inputs:
-  bus_data (Pandas DataFrame): DataFrame of the restaurants in Cook County and their information
+  bus_data (list): list of business IDs, default is set to None
   first_round (boolean): True if this is the first round of API calls, False otherwise
   round_num (str): String of the current round number 
   
