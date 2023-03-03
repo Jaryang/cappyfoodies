@@ -1,0 +1,30 @@
+'''
+This simulates getting businesses nearest to a user's location using Yelp Fusion's API.
+'''
+API_KEY = 'g5LKgbWTyQWTEkfnknhTvgtiDMUKzp7_0v9ofFnucn7Lheiq2hTFNn2H8JRSM--SBq5RaJaKVgRqZBrJsOnWsZFvaFTAq96ADWOY5Dany9m6n7AGIzfo4cMJNOnrY3Yx'
+BUS_ENDPOINT = 'https://api.yelp.com/v3/businesses/search'
+HEADERS = {'Authorization': 'bearer %s' % API_KEY}
+
+
+print("To get a list of restaurants that input your zipcode or your city:")
+print("")
+print("")
+print("You could use your current zipcode. For example: 60637")
+print("")
+print("")
+print("You could also input your current city. For example: Chicago")
+print("")
+print("")
+print("Or you could input your address. For example: 5801 S Ellis Ave, Chicago, IL 60637")
+print("")
+
+
+location = input('Type your location here: ')
+PARAMETERS = {'limit': 10, 'categories': 'food', 'location': location, 'sort_by': 'rating'}
+response = requests.get(url = BUS_ENDPOINT, params = PARAMETERS, headers = HEADERS)
+bus_dic = response.json()["businesses"]
+for i, bus in enumerate(bus_dic):
+    print("")
+    print("")
+    print("#{}: {}".format(i+1, bus['name']))
+    print("")
