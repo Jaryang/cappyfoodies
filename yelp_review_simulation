@@ -31,6 +31,6 @@ rev_dic = response.json()['reviews']
 for i, rev in enumerate(rev_dic):
     print("")
     print("Review #{}: {}".format(i+1, rev['text']))
-    print("Overall Rating: {}/5".format(rev['rating']))
+    print("User Rating: {}/5".format(rev['rating']))
     print("")
     
