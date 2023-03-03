@@ -26,5 +26,5 @@ bus_dic = response.json()["businesses"]
 for i, bus in enumerate(bus_dic):
     print("")
     print("")
-    print("#{}: {}".format(i+1, bus['name']))
+    print("#{}: {} has an average rating of {}".format(i+1, bus['name'], bus['rating']))
     print("")
