@@ -36,18 +36,6 @@ with open('Boundaries - ZIP Codes.geojson') as f:
 # Merge restaurant and risk data
 merged_restaurant = pd.merge(df_restaurants_yelp, df_foodrisk_byzip, left_on='zip_code', right_on='NAME')
 
-
-def update_output(zipcode):
-    row = demo_data.loc[demo_data['NAME'] == zipcode]
-    per_bachelor = float(row['per_bachelor'])*100
-    median_income = str(row['med_hd_inc'])
-    fd_stamp = float(row['per_fdstamp'])*100
-    
-    text = 'Median Household Income: ${}             Education: {}% have bachelor degree or higher             Food stamp: {}% households are eligible for food stamp'.format(median_income,                                                                           per_bachelor, fd_stamp)
-    
-    return text
-
-
 def map_zipcode_with_id(dataset):
     """
     Compuate a dictionary where the key is the zip code and the value is 
