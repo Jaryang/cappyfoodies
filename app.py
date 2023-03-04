@@ -26,16 +26,11 @@ def run_api_simulation():
     """
     return yelp_simul()
 
-def run_yelp_restaurants():
-    """
-    Gather Yelp restaurants from Cook County
-    """
-    return get_businesses()
-
 def run_yelp_reviews():
     """
     Gather reviews for Cook County restaurants
     """
+    get_businesses()
     return get_reviews()
 
 
@@ -97,7 +92,6 @@ def run():
             run_api_simulation()
         elif getdata_user_input == 'reviews':
             print("Getting reviews")
-            run_yelp_restaurants()
             run_yelp_reviews()
         else:
             sys.exit()
