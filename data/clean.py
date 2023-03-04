@@ -176,7 +176,7 @@ def clean_rest(filename):
         for row in data:
             writer.writerow(row)
 
-def gen_top_eth(filename):
+def gen_top(filename):
 
     data = clean_pop(filename)
 
@@ -207,19 +207,13 @@ def gen_top_eth(filename):
         for key, value in top_5.items():
             writer.writerow([key, value])
 
-def find_top_cate(data, top_num):
+def find_top_cate(data, top_num, with_val = False):
 
     top_dict = {}
     
     for key, value in data.items():
         if key == 'Label':
             continue
-        lst = sorted(range(len(value)), key=lambda i: value[i])[-6:]
+        lst = sorted(range(len(value)), key=lambda i: value[i])[top_num]
 
-    race_lst = []
-        for x in lst[: : -1]:
-            if x != 0:
-                race = label[x]
-                race_lst.append((race, value[x]))
-        
-        top_dict[key] = race_lst
+   
