@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[18]:
-
-
 import pandas as pd
 import geojson
 import folium
@@ -26,7 +20,6 @@ import csv
 import string 
 from nltk.corpus import stopwords
 
-# Load the data
 df_restaurants_yelp = pd.read_csv('res_label.csv')
 df_pantries = pd.read_csv('pantry_data.csv')
 df_foodrisk_byzip = pd.read_csv('res_riskiness.csv')
@@ -39,11 +32,9 @@ with open("cleaned_review.json") as f:
 
 with open('Boundaries - ZIP Codes.geojson') as f:
     gj = geojson.load(f)
+
 # Merge restaurant and risk data
 merged_restaurant = pd.merge(df_restaurants_yelp, df_foodrisk_byzip, left_on='zip_code', right_on='NAME')
-
-
-# In[3]:
 
 
 def update_output(zipcode):
@@ -55,9 +46,6 @@ def update_output(zipcode):
     text = 'Median Household Income: ${}             Education: {}% have bachelor degree or higher             Food stamp: {}% households are eligible for food stamp'.format(median_income,                                                                           per_bachelor, fd_stamp)
     
     return text
-
-
-# In[4]:
 
 
 def map_zipcode_with_id(dataset):
@@ -148,15 +136,8 @@ def plot_wordcloud(token_freq):
     return wc.to_image()
 
 
-# In[5]:
-
-
 zipcode_dict = map_zipcode_with_id(business_dta)
 zipcode_tokens = cluster_tokens(zipcode_dict, review_dta)
-
-
-# In[6]:
-
 
 df = demo_data.iloc[0:1]
 race_info = eval(df['top_race'].tolist()[0])
@@ -194,26 +175,11 @@ def bar_plot(zipcode,demo_data):
     return fig
 
 
-# In[7]:
-
-
 zip_lst = []
 for i in df_foodrisk_byzip['NAME']:
     if i != 'nan':
         zip_lst.append(i)
 zip_lst = zip_lst[0:59]
-
-
-# In[56]:
-
-
-zip_lst
-
-
-# # Style updates
-
-# In[8]:
-
 
 colors = {
     'background': '#FDFEFE',
@@ -226,9 +192,6 @@ styles = {
         'overflowX': 'scroll'
     }
 }
-
-
-# In[ ]:
 
 
 # Define initial dropdown option
@@ -512,13 +475,3 @@ def update_output_inc(selected_zipcode):
     median_income = float(row['med_hd_inc'].str.replace(',',''))
 
     return "Median Household Income: ${}".format(median_income)
-
-if __name__ == "__main__":
-    app.run_server()
-
-
-# In[ ]:
-
-
-
-
