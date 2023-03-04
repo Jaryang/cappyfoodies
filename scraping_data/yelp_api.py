@@ -247,8 +247,8 @@ def get_businesses():
     at differing price points in Cook County.
 
     Outputs (CSV file):
-    yelp_businesses.csv, which is a CSV file that lists the restaurant in each 
-    zipcode.
+        yelp_businesses.csv, which is a CSV file that lists the restaurant in each 
+         zipcode.
     '''
     business_data = []
     #The Yelp Fusion's limit for calling businesses is 50, so in order to 
@@ -289,16 +289,16 @@ def get_reviews(bus_data=None, first_round=True, round_num=''):
     in Cook County 
 
     Inputs:
-    bus_data (list): list of business IDs, default is set to None
-    first_round (boolean): True if this is the first round of API calls, 
-    False otherwise
-    round_num (str): String of the current round number 
+        bus_data (list): list of business IDs, default is set to None
+        first_round (boolean): True if this is the first round of API calls, 
+            False otherwise
+        round_num (str): String of the current round number 
 
     Outputs:
-    final_dic: a dictionary with the key being the unique ID for each 
-    restaurant and the values being the three reviews from Yelp's Fusion API
-    uncleaned_yelp_reviews.json: a JSON file that contains all the reviews 
-    within the above dictionary.
+        final_dic: a dictionary with the key being the unique ID for each 
+            restaurant and the values being the three reviews from Yelp's Fusion API
+        uncleaned_yelp_reviews.json: a JSON file that contains all the reviews 
+            within the above dictionary.
     '''
     final_dic = {}
  
@@ -335,8 +335,8 @@ def get_more_revs(round_num):
 
     Outputs:
         'uncleaned_yelp_reviews.json', which is the overwritten JSON file that 
-        contains all the reviews gotten in the current and past rounds of API 
-        calls 
+            contains all the reviews gotten in the current and past rounds of API 
+            calls 
     '''
     #Loading the yelp reviews from previous rounds
     with open("uncleaned_yelp_reviews.json", "r") as file:
