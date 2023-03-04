@@ -1,27 +1,7 @@
 import pandas as pd
 import re
 import csv
-
-cate_dct = {
-    'Bakeries' : ["Bakeries", "Piadina", "Pretzels", "Bagels", 'Patisserie/Cake Shop'],
-    'Alcohol' : ['Cocktail Bars','Brewpubs','Beer Bar','Whiskey Bars','Wine Bars','Beer, Wine & Spirits', 'Pubs', 'Bars','Dive Bars', \
-                 'Sports Bars','Beer', 'Wine & Spirits', 'Breweries', 'Cideries', 'Distilleries', 'Meaderies', 'Wineries', 'Wine Tasting Room'],
-    'Coffee_Tea' : ['Coffee & Tea','Coffee Roasteries', 'Tea Rooms,Bubble Tea', 'Cafes'],
-    'Dessert' : ['Creperies','Candy Stores','Pancakes','Desserts','Chimney Cakes','Cupcakes','Custom Cakes','Donuts', 'Gelato', 'Honey', \
-                 'Ice Cream & Frozen Yogurt', 'Milkshake Bars', 'Shaved Ice', 'Shaved Snow', 'Candy Stores', 'Chocolatiers & Shops', 'Macarons'],
-    'Grocery' : ['Imported Food', 'International Grocery','Organic Stores','Fruits & Veggies','Health Markets','Convenience Stores','Farmers Market','CSA'],
-    'Beverage' : ['Juice Bars & Smoothies', 'Acai Bowls','Kombucha', 'Water Stores', 'Bubble Tea'],
-    'Fast_Food': ['Cheesesteaks','Burgers', 'Chicken Wings','Fast Food','Pizza', 'Hot Dogs', 'Sandwiches'],
-    'Specialty_Store' : ['Cheese Shops','Herbs & Spices','Olive Oil','Pasta Shops','Popcorn Shops','Tofu Shops','Empanadas'],
-    'Meat_Shop' : ['Seafood Markets', 'Butcher', 'Smokehouse'],
-    'Regional' : ['Cuban', 'Venezuelan','Honduran','Vietnamese','Afghan','African','Bulgarian','Colombian', 'Japanese', 'Laotian', 'Latin American', \
-                  'Mediterranean', 'Mexican', 'Middle Eastern', 'Modern European', 'New Mexican Cuisine', 'Pakistani','Pan Asian', 'Polish', 'Puerto Rican', 'Scottish', \
-                  'Southern','Thai', 'Turkish','Chinese', 'Czech','Filipino','French','Greek', 'Hawaiian', 'Indian', 'Irish', 'Korean','German','Italian',\
-                  'Japanese','Czech','American (Traditional)','American (New)','Asian Fusion', 'Cajun/Creole','Cantonese','Caribbean']
-    }
-Not_Food = ['Kids Activities', 'Music Venues', 'Arcades','Venues & Event Spaces','Party & Event Planning','Comedy Clubs', \
-            'Street Vendors','Bookstores','Lounges', 'Vape Shops','Gift Shops']
-Sub_Category = ['Halal','Noodles','Tacos', 'Sushi Bars','Soul Food', 'Dim Sum', 'Buffets', 'Cafeteria', 'Food Trucks','Gluten-Free','Caterers','Vegan','Diners']
+from category_dict import cate_dct, Not_Food, Sub_Category
 
 def clean_edu(filename):
     '''
@@ -48,24 +28,39 @@ def clean_edu(filename):
 def clean_foodstamp(filename):
     '''
     take in the food stamp data downloaded from census bureau and clean it
+    Input:
+        filename (string)
+    
+    Output:
+        df (pandas dataframe)
     '''
     fd_data = pd.read_csv(filename)
 
     df = fd_data[['NAME','S2201_C01_001E','S2201_C03_001E']]
-    df = df.drop([0])
+    df = df.drop([0]) #drop the non-numeric row
     df = df.rename(columns={'S2201_C01_001E': 'num_household', 'S2201_C03_001E': 'household_fd'})
     df["NAME"] = df['NAME'].str.extract(r'(\d{5})$')
     df['per_fdstamp'] = df['household_fd'].astype(int) / df['num_household'].astype(int)
 
     return df
 
+
 def clean_income(filename):
     '''
     take in the income data downloaded from census bureau and clean it
+    Input:
+        filename (string)
+    
+    Output:
+        df (pandas dataframe)
     '''
     inc_data = pd.read_csv(filename)
+
+    #filter the estimate of household income
     df = inc_data[inc_data['Label (Grouping)'].str.contains('household income')==True]
     df = df.filter(regex = '!Estimate')
+
+    #change the name to zipcode and transpose
     df.rename(columns = lambda x: x.replace('ZCTA5 ',"")[:5], inplace = True)
     df = df.T
     df['NAME'] =df.index
@@ -77,9 +72,17 @@ def clean_income(filename):
 
 def clean_pop(filename):
     '''
-    take in the income data downloaded from census bureau and clean it
+    take in the population data downloaded from census bureau and clean it
+
+    Input:
+        filename (string)
+    
+    Output:
+        df (pandas dataframe)
     '''
     pop_data = pd.read_csv(filename)
+
+    #Taking the name of race/ethnic group and get estimate population
     pop_data['Label (Grouping)'] = pop_data['Label (Grouping)'].str.strip()
     df = pop_data.filter(regex = '!Estimate')
     df.insert(0, 'Label', pop_data['Label (Grouping)'])
