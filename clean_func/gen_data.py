@@ -1,7 +1,10 @@
 import pandas as pd
-import clean
+import clean_func.clean
 
 def gen_data():
+    '''
+    calling all the clean function to generate data needed for visualization
+    '''
 
     #demongraphic data
     df_edu = clean.clean_edu("../data/education.csv")

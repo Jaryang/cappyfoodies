@@ -2,7 +2,7 @@ import sys
 import pandas as pd
 import re
 import csv
-from category_dict import cate_dct, Not_Food, Sub_Category
+from clean_func.category_dict import cate_dct, Not_Food, Sub_Category
 
 def clean_edu(filename):
     '''
@@ -42,6 +42,8 @@ def clean_foodstamp(filename):
     df = df.drop([0]) #drop the non-numeric row
     df = df.rename(columns={'S2201_C01_001E': 'num_household', 'S2201_C03_001E': 'household_fd'})
     df["NAME"] = df['NAME'].str.extract(r'(\d{5})$')
+
+    #calculate the percentage of household eligible for food stamp
     df['per_fdstamp'] = df['household_fd'].astype(int) / df['num_household'].astype(int)
 
     return df
@@ -76,6 +78,13 @@ def find_top_race(data, top_num):
     '''
     Finding the most frequent categories in a dataset, return a \
         dictionary with a list of those categories
+    
+    Input:
+        data: the dataset to count
+        top_num: the number of top category to keep
+
+    Output:
+        top_dict(dictionary): with the region as key and category list as value
     '''
     top_dict = {}
     
@@ -97,8 +106,7 @@ def find_top_race(data, top_num):
 def clean_pop(filename):
     '''
     take in the population data downloaded from census bureau and find 
-    the most common race/ethnic group in each zip code, making these
-    info into a csv
+    the most common race/ethnic group in each zip code
 
     Input:
         filename (string)
@@ -130,7 +138,7 @@ def clean_pop(filename):
                     total_pop = float(pop_val)
                 value[i] = float(str(val).replace(',','')) / total_pop
 
-    #finding the most common 5 groups          
+    #finding the most common 5 groups and make it into a dataframe         
     top_dict = find_top_race(pop_data, 5)
     data_list = [{'NAME': k, 'top_race': v} for k, v in top_dict.items()]
     df = pd.DataFrame(data_list)
@@ -139,7 +147,15 @@ def clean_pop(filename):
 
 
 def relabel(cat_lst):
-    
+    '''
+    relabel the categories given by Yelp to fewer category
+
+    Input: 
+        cat_lst: list of category from Yelp
+
+    Output:
+        list of new category
+    '''
     new_label = []
     for label in cat_lst:
         if label not in Not_Food and label not in Sub_Category:
@@ -157,8 +173,14 @@ def relabel(cat_lst):
 
 def find_cat(cat_lst, new_cat):
     '''
-    if category in new_cat, return the most common one
-    if not: return 'other'
+    Categorize the restaurants based on new category, if category in new_cat, 
+    return the most common one if not: return 'other'
+    Input:
+        cat_lst: old category from Yelp
+        new_cat: new list generated from relabel
+    
+    Output:
+        new label
     '''
     find_label = False
 
@@ -173,7 +195,14 @@ def find_cat(cat_lst, new_cat):
 
 def clean_rest(filename):
     '''
-    Taking in the yelp data and relabel restaurants for data viz
+    Taking in the yelp data and relabel restaurants for data viz: relabeling 
+    and finding the most common category of restaurant
+
+    Input:
+        filename (string)
+    
+    Output:
+        df (pandas dataframe)
     '''
     with open(filename) as f:
         reader = csv.DictReader(f)
@@ -201,6 +230,7 @@ def clean_rest(filename):
         lst = sorted(value, key=lambda i: value[i])[-3:]
         top_3_food[key] = lst
 
+    #change the label
     for restaurant in data:
         cat_lst = restaurant['new_labels']
         zipcode = restaurant['zip_code']
@@ -208,6 +238,7 @@ def clean_rest(filename):
         restaurant['food_label'] = find_cat(cat_lst, new_cat)
         restaurant['regional_label'] = find_cat(cat_lst, cate_dct['Regional'])
 
+    #write into a csv file
     headers = []
     for i, rest in enumerate(data):
         if i == 0:
