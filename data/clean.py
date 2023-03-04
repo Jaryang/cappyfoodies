@@ -101,9 +101,11 @@ def relabel(cat_lst):
 
     for i, label in enumerate(new_label):
         for category, lst in cate_dct.items():
+            if category == 'Regional':
+                continue
             if label in lst:
                 new_label[i] = category
-        
+
     return list(set(new_label))
 
 def find_cat(cat_lst, new_cat):
@@ -134,6 +136,7 @@ def clean_rest(filename):
     
     counter = {}
 
+    #counting the number of restaurants of each category
     for restaurant in data:
         cat_lst = eval(restaurant['categories'])
         zipcode = restaurant['zip_code']
@@ -144,22 +147,19 @@ def clean_rest(filename):
         for type in new_category:
             counter[zipcode][type] = counter[zipcode].get(type, 0) + 1
 
+    #Find the top 3 most common category to visualize
     top_3_food = {}
-    sum_lst = []
 
     for key, value in counter.items():
         lst = sorted(value, key=lambda i: value[i])[-3:]
-        sum_lst.extend(lst)
         top_3_food[key] = lst
-    
+
     for restaurant in data:
         cat_lst = restaurant['new_labels']
         zipcode = restaurant['zip_code']
         new_cat = top_3_food[zipcode]
-        food_label = find_cat(cat_lst, new_cat)
-        regional_label = find_cat(cat_lst, cate_dct['Regional'])
-        restaurant['food_label'] = food_label
-        restaurant['regional_label'] = regional_label
+        restaurant['food_label'] = find_cat(cat_lst, new_cat)
+        restaurant['regional_label'] = find_cat(cat_lst, cate_dct['Regional'])
 
     headers = []
     for i, rest in enumerate(data):
