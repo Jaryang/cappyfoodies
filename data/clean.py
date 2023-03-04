@@ -176,3 +176,50 @@ def clean_rest(filename):
         for row in data:
             writer.writerow(row)
 
+def gen_top_eth(filename):
+
+    data = clean_pop(filename)
+
+    label = data['Label']
+
+    for key, value in data.items():
+        if key == 'Label':
+            continue
+        else:
+            for i, val in enumerate(value):
+                if i == 0:
+                    pop_val = str(val).replace(',','')
+                    total_pop = float(pop_val)
+                value[i] = float(str(val).replace(',','')) / total_pop
+
+    
+        race_lst = []
+        for x in lst[: : -1]:
+            if x != 0:
+                race = label[x]
+                race_lst.append((race, value[x]))
+        
+        top_5[key] = race_lst
+
+    with open('top_race.csv', 'w') as csv_file:  
+        writer = csv.writer(csv_file)
+        writer.writerow(['NAME', 'top_race'])
+        for key, value in top_5.items():
+            writer.writerow([key, value])
+
+def find_top_cate(data, top_num):
+
+    top_dict = {}
+    
+    for key, value in data.items():
+        if key == 'Label':
+            continue
+        lst = sorted(range(len(value)), key=lambda i: value[i])[-6:]
+
+    race_lst = []
+        for x in lst[: : -1]:
+            if x != 0:
+                race = label[x]
+                race_lst.append((race, value[x]))
+        
+        top_dict[key] = race_lst
