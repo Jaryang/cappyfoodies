@@ -3,14 +3,17 @@
 # Food Accessibility and Security in Cook County
 
 According to the United States Department of Agriculture, food insecurity is “a household-level economic and social condition of limited or uncertain access to adequate food” (USDA). For our project, we visualize and explore patterns between the following key components affecting food insecurity:\
+
 Food Access (Proximity to food)\
 Food Quality \
 Food Price\
 Food Type\
 Restaurant Cleanliness\
-Socioeconomic Factors\
+Socioeconomic Factors
 
 Our project centers on Cook County and uses data from Yelp Fusion’s API, scraped emergency pantry data from the Sheriff’s Office’s, and downloaded demographic data from the US Census Bureau. 
+
+Since 1 in 4 children in Cook County are at risk of hunger, we hope that our application can help educate people about food accessibility as it is a critical health issue.
 
 ### Team Member (Last Name in Alphabetic Order)
 Miao Li, Yueyue Wang, Maxine Xu, Jariel Yang
