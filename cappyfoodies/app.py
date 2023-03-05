@@ -73,7 +73,7 @@ def run():
             print("Starting Simulation...")
             run_api_simulation()
         elif getdata_user_input == "3":
-            print("Getting reviews")
+            print("Getting reviews...")
             run_yelp_reviews()
         else:
             sys.exit()
