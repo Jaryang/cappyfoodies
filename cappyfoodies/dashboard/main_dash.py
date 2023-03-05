@@ -37,7 +37,7 @@ with open(boundaries) as f:
     gj = geojson.load(f)
 
 # Merge restaurant and risk data
-merged_restaurant = pd.merge(res_label, df_foodrisk_byzip, left_on='zip_code', right_on='NAME')
+merged_restaurant = pd.merge(df_restaurants_yelp, df_foodrisk_byzip, left_on='zip_code', right_on='NAME')
 
 def update_output(zipcode):
     row = demo_data.loc[demo_data['NAME'] == zipcode]
