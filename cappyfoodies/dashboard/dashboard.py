@@ -39,16 +39,6 @@ with open(boundaries) as f:
 # Merge restaurant and risk data
 merged_restaurant = pd.merge(res_label, df_foodrisk_byzip, left_on='zip_code', right_on='NAME')
 
-def update_output(zipcode):
-    row = demo_data.loc[demo_data['NAME'] == zipcode]
-    per_bachelor = float(row['per_bachelor'])*100
-    median_income = str(row['med_hd_inc'])
-    fd_stamp = float(row['per_fdstamp'])*100
-    
-    text = 'Median Household Income: ${}             Education: {}% have bachelor degree or higher             Food stamp: {}% households are eligible for food stamp'.format(median_income,                                                                           per_bachelor, fd_stamp)
-    
-    return text
-
 
 def map_zipcode_with_id(dataset):
     """
@@ -157,6 +147,9 @@ data = {'Race': race_lst,
 df = pd.DataFrame(data)
 
 def bar_plot(zipcode,demo_data):
+    '''
+    Taking in the demographic info of a zipcode and return the bar plot
+    '''
     
     row = demo_data.loc[demo_data['NAME'] == zipcode] #change the type to str
     race_info = eval(row['top_race'].tolist()[0])
@@ -255,8 +248,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},
 
     html.Div(children='''This project focuses on a variety of topics related to food accessibility and food options in Cook County, 
     Illinois, including health risk level and review of restaurants, access to free food pantry, restaurants’ category, as well as 
-    related regional demographic information. This project aims to give a general description of [aim] meeting residents' demand 
-    for food, clean food, and food of the quality and category they desire. ''',
+    related regional demographic information. This project aims to give a general description and raise awareness of how Cook County
+    is meeting residents' demand for food, clean food, and food of the quality and category they desire. ''',
     
              style={
         'textAlign': 'center',
@@ -305,7 +298,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},
                  dcc.Graph(
     id='bar-graph'
     ),
-    html.H3(children='Demographic information by zip code Word Cloud of the most frequent words in the reviews of restaurants in this zip code',
+    html.H3(children='Word Cloud of the most frequent words in the reviews of restaurants in this zip code',
             style={
     'textAlign': 'left',
     'color': colors['text'],
@@ -339,7 +332,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},
     'color': colors['text']
     }
     ),
-    html.Div(children='This graph gives the geographic location of pantries and restaurants. The pantry submap gives information of where to find food pantry and its serve area. The restaurant submap has a slider with which the user can filter restaurants by their rating (from 1 - 5)  on Yelp. At the same time, the restaurants are color-coded if they serve one of the 14 most common regional foods.',
+    html.Div(children='This graph gives the geographic location of pantries and restaurants. The pantry submap gives information of where to find food pantry and its service area. The restaurant submap has a slider with which the user can filter restaurants by their rating (from 1 - 5)  on Yelp. At the same time, the restaurants are color-coded if they serve one of the most common regional/ethinic foods.',
              style={
     'textAlign': 'left',
     'color': colors['text'],
