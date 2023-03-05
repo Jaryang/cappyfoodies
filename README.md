@@ -2,7 +2,7 @@
 
 # Food Accessibility and Security in Cook County
 
-According to the United States Department of Agriculture, food insecurity is “a household-level economic and social condition of limited or uncertain access to adequate food” (USDA). For our project, we visualize and explore patterns between the following key components affecting food insecurity:\
+According to the United States Department of Agriculture, food insecurity is “a household-level economic and social condition of limited or uncertain access to adequate food” (USDA). For our project, we visualize and explore patterns between the following key components affecting food insecurity:
 
 Food Access (Proximity to food)\
 Food Quality \
