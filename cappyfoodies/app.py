@@ -12,7 +12,7 @@ def run_dashboard():
     """
     Running dashboard
     """
-    app = main_dash.app
+    app = dashboard.app
     app.run_server(debug=False)
 
 def run_pantry_scraper(): 
@@ -38,7 +38,7 @@ def run_clean():
     """
     Clean datasets in the data directory
     """
-    gen_data()
+    pass
 
 def run():
     """
@@ -46,10 +46,11 @@ def run():
     """
     print("Welcome to Cook County Food Accessibility and Security App!")
     user_input = input(
-        """Please Enter an Option: 
+        """Please type 
+            Please Enter: 
                 (1) For Dashboard, 
                 (2) For data cleaning, 
-                (3) Download new data
+                (3) For scraping data and API interaction
                 (4) Quit program.
                 Option: """)
     if user_input == "1":
@@ -60,10 +61,11 @@ def run():
         run_clean()
     elif user_input == "3":
         getdata_user_input = input(
-            """Please Enter an Option: 
+            """Please type 
                 (1) Scrape the list of emergency pantries from Cook County's Sheriff's Office,
                 (2) Simulate interacting with Yelp's API,
-                (3) Gather the full dataset of reviews for restaurants in Cook County using Yelp's API, or
+                (3) Gather the full dataset of reviews for restaurants
+                in Cook County using Yelp's API, or
                 (4) or anything else for quit program.""")
         if getdata_user_input == "1":
             print("Scraping data...")
