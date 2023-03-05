@@ -43,35 +43,36 @@ def run():
     """
     User type some arguments and we run a program
     """
-    print("Welcome to our Trade Dashboards and Analysis program!")
+    print("Welcome to Cook County Food Accessibility and Security App!")
     user_input = input(
         """Please type 
-            'dashboard' for dashboard, 
-            'clean data' for cleaning data, 
-            'scrape' for starting web scraping
-            'quit' or anything else for quit program.""")
-    if user_input == 'dashboard':
+            Please Enter: 
+                (1) For Dashboard, 
+                (2) For data cleaning, 
+                (3) Download new data
+                (4) Quit program.
+                Option: """)
+    if user_input == 1:
         print("running dashboard...")
         run_dashboard()
-    elif user_input == "clean data":
+    elif user_input == 2:
         print("running data cleaning...")
         run_clean()
-    elif user_input == 'scrape':
+    elif user_input == 3:
         getdata_user_input = input(
             """Please type 
-                'scraper' to scrape the list of emergency pantries from
-                Cook County's Sheriff's Office,
-                'simulation' to simulate interacting with Yelp's API,
-                'reviews' to gather the full dataset of reviews for restaurants
+                (1) Scrape the list of emergency pantries from Cook County's Sheriff's Office,
+                (2) Simulate interacting with Yelp's API,
+                (3) gather the full dataset of reviews for restaurants
                 in Cook County using Yelp's API, or
-                'quit' or anything else for quit program.""")
-        if getdata_user_input == 'scraper':
+                (4) or anything else for quit program.""")
+        if getdata_user_input == 1:
             print("Scraping data...")
             run_pantry_scraper()
-        elif getdata_user_input == 'simulation':
+        elif getdata_user_input == 2:
             print("Starting Simulation...")
             run_api_simulation()
-        elif getdata_user_input == 'reviews':
+        elif getdata_user_input == 3:
             print("Getting reviews")
             run_yelp_reviews()
         else:
