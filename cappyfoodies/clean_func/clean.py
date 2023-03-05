@@ -2,7 +2,7 @@ import sys
 import pandas as pd
 import re
 import csv
-from clean_func.category_dict import cate_dct, Not_Food, Sub_Category
+from .category_dict import cate_dct, Not_Food, Sub_Category
 
 def clean_edu(filename):
     '''
