@@ -1,7 +1,5 @@
 import requests
-API_KEY = 'g5LKgbWTyQWTEkfnknhTvgtiDMUKzp7_0v9ofFnucn7Lheiq2hTFNn2H8JRSM--SBq5RaJaKVgRqZBrJsOnWsZFvaFTAq96ADWOY5Dany9m6n7AGIzfo4cMJNOnrY3Yx'
-BUS_ENDPOINT = 'https://api.yelp.com/v3/businesses/search'
-HEADERS = {'Authorization': 'bearer %s' % API_KEY}
+from .yelp_api import API_KEY, BUS_ENDPOINT, HEADERS
 
 def yelp_simul():
     '''
