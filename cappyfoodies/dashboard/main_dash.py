@@ -257,7 +257,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},
     is meeting residents' demand for food, clean food, and food of the quality and category they desire. ''',
     
              style={
-        'textAlign': 'center',
+        'textAlign': 'left',
         'color': colors['text'],
         'width' : '100%',
         'padding' :5
@@ -339,7 +339,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},
     ),
     html.Div(children='This graph gives the geographic location of pantries and restaurants. The pantry submap gives information of where \
              to find food pantry and its serve area. The restaurant submap has a slider with which the user can filter restaurants by their \
-             rating (from 1 - 5)  on Yelp. At the same time, the restaurants are color-coded if they serve one of the most common regional/ethnic foods.',
+             rating (from 1 - 5)  on Yelp. At the same time, the restaurants are color-coded if they serve one of the most common regional/ethnic foods in Cook County.',
              style={
     'textAlign': 'left',
     'color': colors['text'],
