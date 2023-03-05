@@ -246,7 +246,7 @@ def clean_rest(filename):
                 headers.append(head)
 
 
-    with open('../cleaned_data/res_label.csv', 'w', newline = "") as csv_file:  
+    with open('./cappyfoodies/cleaned_data/res_label.csv', 'w', newline = "") as csv_file:  
         writer = csv.DictWriter(csv_file, fieldnames=headers)
         writer.writeheader()
         for row in data:

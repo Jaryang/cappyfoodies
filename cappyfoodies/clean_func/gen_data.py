@@ -7,10 +7,10 @@ def gen_data():
     '''
 
     #demongraphic data
-    df_edu = clean.clean_edu("../data/education.csv")
-    df_fdstamp = clean.clean_foodstamp("../data/food stamp.csv")
-    df_inc = clean.clean_income("../data/income.csv")
-    df_race = clean.clean_pop('../data/population.csv')
+    df_edu = clean.clean_edu("./cappyfoodies/data/education.csv")
+    df_fdstamp = clean.clean_foodstamp("./cappyfoodies/data/food stamp.csv")
+    df_inc = clean.clean_income("./cappyfoodies/data/income.csv")
+    df_race = clean.clean_pop('./cappyfoodies/data/population.csv')
 
     df_1 = pd.merge(df_edu, df_inc, on = 'NAME', how = 'left')
 
@@ -20,7 +20,7 @@ def gen_data():
 
     df_3 = pd.concat([df_2, df_race], axis = 1)
     
-    df_3.to_csv("../cleaned_data/demo_data.csv")
+    df_3.to_csv("./cappyfoodies/cleaned_data/demo_data.csv")
 
     #restaurant data
-    clean.clean_rest('../data/business_cleaned_v3.csv')
+    clean.clean_rest('./cappyfoodies/cleaned_data/business_cleaned_v3.csv')
