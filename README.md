@@ -31,7 +31,7 @@ PIL\
 io\
 base64\
 nltk\
-pathlib\
+pathlib
 
 # Steps to launch the application
 
