@@ -149,6 +149,12 @@ df = pd.DataFrame(data)
 def bar_plot(zipcode,demo_data):
     '''
     Taking in the demographic info of a zipcode and return the bar plot
+    Input:
+        zip code (int): zip code of area of interest
+        demo_data: the dataset containing info
+    
+    Output:
+        figure
     '''
     
     row = demo_data.loc[demo_data['NAME'] == zipcode] #change the type to str
