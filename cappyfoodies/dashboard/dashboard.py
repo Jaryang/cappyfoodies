@@ -21,6 +21,8 @@ pantry_data = pathlib.Path(__file__).parent / "cleaned_data/pantry_data.csv"
 res_riskiness = pathlib.Path(__file__).parent / "cleaned_data/risk_cleaned.csv"
 demo_data = pathlib.Path(__file__).parent / "cleaned_data/demo_data.csv"
 business_cleaned_v3 = pathlib.Path(__file__).parent / "cleaned_data/business_cleaned_v3.csv"
+boundaries = pathlib.Path(__file__).parent / "cleaned_data/Boundaries - ZIP Codes.geojson"
+cleaned_review = pathlib.Path(__file__).parent / "cleaned_data/cleaned_review_V2.json"
 
 df_restaurants_yelp = pd.read_csv(res_label)
 df_pantries = pd.read_csv(pantry_data)
@@ -28,10 +30,10 @@ df_foodrisk_byzip = pd.read_csv(res_riskiness)
 demo_data =  pd.read_csv(demo_data)
 business_dta = pd.read_csv(business_cleaned_v3)
 
-with open("cleaned_review_V2.json") as f:
+with open(cleaned_review) as f:
     review_dta = json.loads(f.read())
 
-with open('Boundaries - ZIP Codes.geojson') as f:
+with open(boundaries) as f:
     gj = geojson.load(f)
 
 # Merge restaurant and risk data
