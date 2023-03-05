@@ -14,22 +14,28 @@ from dash import html, dcc
 from io import BytesIO
 import base64
 from nltk.corpus import stopwords
+import pathlib
 
-df_restaurants_yelp = pd.read_csv('res_label.csv')
-df_pantries = pd.read_csv('pantry_data.csv')
-df_foodrisk_byzip = pd.read_csv('res_riskiness.csv')
-demo_data =  pd.read_csv('demo_data.csv')
-df_res_label = pd.read_csv('res_label.csv')
+res_label = pathlib.Path(__file__).parent / "cleaned_data/res_label.csv"
+pantry_data = pathlib.Path(__file__).parent / "cleaned_data/pantry_data.csv"
+res_riskiness = pathlib.Path(__file__).parent / "cleaned_data/risk_cleaned.csv"
+demo_data = pathlib.Path(__file__).parent / "cleaned_data/demo_data.csv"
+business_cleaned_v3 = pathlib.Path(__file__).parent / "cleaned_data/business_cleaned_v3.csv"
 
-business_dta = pd.read_csv("business_cleaned_v2.csv")
-with open("cleaned_review.json") as f:
+df_restaurants_yelp = pd.read_csv(res_label)
+df_pantries = pd.read_csv(pantry_data)
+df_foodrisk_byzip = pd.read_csv(res_riskiness)
+demo_data =  pd.read_csv(demo_data)
+business_dta = pd.read_csv(business_cleaned_v3)
+
+with open("cleaned_review_V2.json") as f:
     review_dta = json.loads(f.read())
 
 with open('Boundaries - ZIP Codes.geojson') as f:
     gj = geojson.load(f)
 
 # Merge restaurant and risk data
-merged_restaurant = pd.merge(df_restaurants_yelp, df_foodrisk_byzip, left_on='zip_code', right_on='NAME')
+merged_restaurant = pd.merge(res_label, df_foodrisk_byzip, left_on='zip_code', right_on='NAME')
 
 def update_output(zipcode):
     row = demo_data.loc[demo_data['NAME'] == zipcode]
