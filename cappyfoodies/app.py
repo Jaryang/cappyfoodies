@@ -1,8 +1,10 @@
 import sys
 import warnings
 warnings.filterwarnings("ignore")
-from . import dashboard
-from .scraping_data import <getready_data, imf_api, un_api>
+# from . import dashboard
+# from .scraping_data.pantry_scraper import food_pantry_tbl, lat_long
+# from .scraping_data.yelp_simulation import yelp_simul
+# from .scraping_data.yelp_api import get_businesses, get_reviews
 
 
 def run_dashboard():
@@ -11,6 +13,25 @@ def run_dashboard():
     """
     app = dashboard.app
     app.run_server(debug=False)
+
+def run_pantry_scraper(): 
+    """
+    Running Pantry Scraper
+    """
+    return food_pantry_tbl()
+
+def run_api_simulation():
+    """
+    Running Yelp API Simulation
+    """
+    return yelp_simul()
+
+def run_yelp_reviews():
+    """
+    Gather reviews for Cook County restaurants
+    """
+    get_businesses()
+    return get_reviews()
 
 
 # def run_un_api():
@@ -51,27 +72,30 @@ def run():
     if user_input == 'dashboard':
         print("running dashboard...")
         run_dashboard()
-    elif user_input == "clean data":
-        print("running data cleaning...")
-        run_analysis()
+    # elif user_input == "clean data":
+    #     print("running data cleaning...")
+    #     run_analysis()
     elif user_input == 'scrape':
         getdata_user_input = input(
             """Please type 
-                'unapi' for download un api,
-                'imfapi' for download imf api,
-                'loadcsv' for download and clean WTO trade products, 
-                    OWID covid, World Bank econ data and Country code data, 
+                'scraper' to scrape the list of emergency pantries from
+                Cook County's Sheriff's Office,
+                'simulation' to simulate interacting with Yelp's API,
+                'reviews' to gather the full dataset of reviews for restaurants
+                in Cook County using Yelp's API, or
                 'quit' or anything else for quit program.""")
-        if getdata_user_input == 'unapi':
-            print("getting new data...")
-            run_un_api()
-        elif getdata_user_input == 'imfapi':
-            print("getting new data...")
-            run_imf_api()
-        elif getdata_user_input == 'loadcsv':
-            print("getting new data...")
-            run_loadcsv()
+        if getdata_user_input == 'scraper':
+            print("Scraping data...")
+            run_pantry_scraper()
+        elif getdata_user_input == 'simulation':
+            print("Starting Simulation...")
+            run_api_simulation()
+        elif getdata_user_input == 'reviews':
+            print("Getting reviews")
+            run_yelp_reviews()
         else:
             sys.exit()
+
     else:
         sys.exit()
+

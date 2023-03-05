@@ -1,5 +1,6 @@
 import json
 import requests
+import pandas as pd
 
 #list of zip codes in Cook County
 cook_zip = ['60629',
