@@ -46,8 +46,7 @@ def run():
     """
     print("Welcome to Cook County Food Accessibility and Security App!")
     user_input = input(
-        """Please type 
-            Please Enter: 
+        """Please Enter an Option: 
                 (1) For Dashboard, 
                 (2) For data cleaning, 
                 (3) Download new data
@@ -61,11 +60,10 @@ def run():
         run_clean()
     elif user_input == "3":
         getdata_user_input = input(
-            """Please type 
+            """Please Enter an Option: 
                 (1) Scrape the list of emergency pantries from Cook County's Sheriff's Office,
                 (2) Simulate interacting with Yelp's API,
-                (3) Gather the full dataset of reviews for restaurants
-                in Cook County using Yelp's API, or
+                (3) Gather the full dataset of reviews for restaurants in Cook County using Yelp's API, or
                 (4) or anything else for quit program.""")
         if getdata_user_input == "1":
             print("Scraping data...")
