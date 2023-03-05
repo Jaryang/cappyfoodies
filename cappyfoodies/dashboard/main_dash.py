@@ -9,20 +9,20 @@ from dash.dependencies import Input, Output
 import json
 import numpy as np
 from wordcloud import WordCloud
-from pillow import Image
+from PIL import Image
 from dash import html, dcc
 from io import BytesIO
 import base64
 from nltk.corpus import stopwords
 import pathlib
 
-res_label = pathlib.Path(__file__).parent / "cleaned_data/res_label.csv"
-pantry_data = pathlib.Path(__file__).parent / "cleaned_data/pantry_data.csv"
-res_riskiness = pathlib.Path(__file__).parent / "cleaned_data/risk_cleaned.csv"
-demo_data = pathlib.Path(__file__).parent / "cleaned_data/demo_data.csv"
-business_cleaned_v3 = pathlib.Path(__file__).parent / "cleaned_data/business_cleaned_v3.csv"
-boundaries = pathlib.Path(__file__).parent / "cleaned_data/Boundaries - ZIP Codes.geojson"
-cleaned_review = pathlib.Path(__file__).parent / "cleaned_data/cleaned_review_V2.json"
+res_label = pathlib.Path(__file__).parent / "../cleaned_data/res_label.csv"
+pantry_data = pathlib.Path(__file__).parent / "../cleaned_data/pantry_data.csv"
+res_riskiness = pathlib.Path(__file__).parent / "../cleaned_data/risk_cleaned.csv"
+demo_data = pathlib.Path(__file__).parent / "../cleaned_data/demo_data.csv"
+business_cleaned_v3 = pathlib.Path(__file__).parent / "../cleaned_data/business_cleaned_v3.csv"
+boundaries = pathlib.Path(__file__).parent / "../cleaned_data/Boundaries - ZIP Codes.geojson"
+cleaned_review = pathlib.Path(__file__).parent / "../cleaned_data/cleaned_review_V2.json"
 
 df_restaurants_yelp = pd.read_csv(res_label)
 df_pantries = pd.read_csv(pantry_data)
