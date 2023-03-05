@@ -5,6 +5,7 @@ from .dashboard import dashboard
 from scraping_data.pantry_scraper import food_pantry_tbl, lat_long
 from scraping_data.yelp_simulation import yelp_simul
 from scraping_data.yelp_api import get_businesses, get_reviews
+from clean_func.gen_data import gen_data
 
 
 def run_dashboard():
@@ -37,7 +38,7 @@ def run_clean():
     """
     Clean datasets in the data directory
     """
-    pass
+    gen_data()
 
 def run():
     """
