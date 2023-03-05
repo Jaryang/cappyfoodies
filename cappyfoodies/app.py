@@ -1,10 +1,10 @@
 import sys
 import warnings
 warnings.filterwarnings("ignore")
-# from . import dashboard
-# from .scraping_data.pantry_scraper import food_pantry_tbl, lat_long
-# from .scraping_data.yelp_simulation import yelp_simul
-# from .scraping_data.yelp_api import get_businesses, get_reviews
+from .dashboard import dashboard
+from .scraping_data.pantry_scraper import food_pantry_tbl, lat_long
+from .scraping_data.yelp_simulation import yelp_simul
+from .scraping_data.yelp_api import get_businesses, get_reviews
 
 
 def run_dashboard():
@@ -33,30 +33,11 @@ def run_yelp_reviews():
     get_businesses()
     return get_reviews()
 
-
-# def run_un_api():
-#     """
-#     Download UN comtrade data
-#     """
-
-#     print ("Start to create dataset.")
-#     un_api.create_un_data()
-#     print ("Dataset is ready.")
-
-# def run_imf_api():
-#     """
-#     Download IMF data
-#     """
-
-#     print ("Start to create dataset.")
-#     imf_api.create_export_import_data()
-#     print ("Dataset is ready.")
-
-# def run_loadcsv():
-#     """
-#     Download CSV from multisources
-#     """
-#     getready_data.create_csv_data()
+def run_clean():
+    """
+    Clean datasets in the data directory
+    """
+    pass
 
 def run():
     """
@@ -72,9 +53,9 @@ def run():
     if user_input == 'dashboard':
         print("running dashboard...")
         run_dashboard()
-    # elif user_input == "clean data":
-    #     print("running data cleaning...")
-    #     run_analysis()
+    elif user_input == "clean data":
+        print("running data cleaning...")
+        run_clean()
     elif user_input == 'scrape':
         getdata_user_input = input(
             """Please type 
