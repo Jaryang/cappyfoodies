@@ -1,5 +1,5 @@
 import pandas as pd
-import clean_func.clean
+import clean
 
 def gen_data():
     '''
