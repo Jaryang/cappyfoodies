@@ -10,12 +10,16 @@ def gen_data():
     calling all the clean function to generate data needed for visualization
     '''
     edu_data = pathlib.Path(__file__).parent / "../data/education.csv"
+    fd_stamp = pathlib.Path(__file__).parent / "../data/food stamp.csv"
+    income_data = pathlib.Path(__file__).parent /"../data/income.csv"
+    pop_data = pathlib.Path(__file__).parent /"../data/population.csv"
+
 
     #demongraphic data
     df_edu = clean.clean_edu(edu_data)
-    df_fdstamp = clean.clean_foodstamp("./cappyfoodies/data/food stamp.csv")
-    df_inc = clean.clean_income("./cappyfoodies/data/income.csv")
-    df_race = clean.clean_pop('./cappyfoodies/data/population.csv')
+    df_fdstamp = clean.clean_foodstamp(fd_stamp)
+    df_inc = clean.clean_income(income_data)
+    df_race = clean.clean_pop(pop_data)
 
     df_1 = pd.merge(df_edu, df_inc, on = 'NAME', how = 'left')
 
