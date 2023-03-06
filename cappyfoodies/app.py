@@ -1,7 +1,7 @@
 import sys
 # import warnings
 # warnings.filterwarnings("ignore")
-from .dashboard import main_dash
+from .dashboard import main_dash_after_style
 from .scraping_data.pantry_scraper import food_pantry_tbl, lat_long
 from .scraping_data.yelp_simulation import yelp_simul
 from .scraping_data.yelp_api import get_businesses, get_reviews
@@ -12,7 +12,7 @@ def run_dashboard():
     """
     Running dashboard
     """
-    app = dashboard.app
+    app = main_dash_after_style.app
     app.run_server(debug=False)
 
 def run_pantry_scraper(): 
@@ -40,8 +40,9 @@ def run_yelp_reviews():
 def run_clean():
     """
     Clean datasets in the data directory
+    Written by: Miao Li
     """
-    pass
+    gen_data()
 
 def run():
     """

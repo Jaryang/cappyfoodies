@@ -3,6 +3,9 @@ import pandas as pd
 import re
 import csv
 from .category_dict import cate_dct, Not_Food, Sub_Category
+'''
+Code contributor: Miao Li
+'''
 
 def clean_edu(filename):
     '''

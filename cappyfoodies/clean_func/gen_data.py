@@ -1,13 +1,18 @@
 import pandas as pd
 from . import clean
+import pathlib
+'''
+code contributor: Miao Li
+'''
 
 def gen_data():
     '''
     calling all the clean function to generate data needed for visualization
     '''
+    edu_data = pathlib.Path(__file__).parent / "../data/education.csv"
 
     #demongraphic data
-    df_edu = clean.clean_edu("./cappyfoodies/data/education.csv")
+    df_edu = clean.clean_edu(edu_data)
     df_fdstamp = clean.clean_foodstamp("./cappyfoodies/data/food stamp.csv")
     df_inc = clean.clean_income("./cappyfoodies/data/income.csv")
     df_race = clean.clean_pop('./cappyfoodies/data/population.csv')
@@ -23,4 +28,6 @@ def gen_data():
     df_3.to_csv("./cappyfoodies/cleaned_data/demo_data.csv")
 
     #restaurant data
-    clean.clean_rest('./cappyfoodies/cleaned_data/business_cleaned_v3.csv')
+    clean.clean_rest('./cappyfoodies/cleaned_data/business_cleaned.csv')
+
+    print("data all cleaned!")
