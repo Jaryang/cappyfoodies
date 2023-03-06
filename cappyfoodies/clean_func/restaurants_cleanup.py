@@ -1,6 +1,5 @@
 import json
 import re
-import os
 import ast
 import pandas as pd
 
@@ -143,8 +142,7 @@ def df_to_csv(dataset, filename):
     
     assert filename.endswith(".csv"), "the format should be .csv !"
     
-    address = 'yelp_dataset/cleaned_data'
-    os.makedirs(address, exist_ok=True)
+    address = './cappyfoodies/cleaned_data'
     file_path = address + "/" + filename
     dataset.to_csv(file_path)
     
@@ -152,6 +150,6 @@ def df_to_csv(dataset, filename):
 
 if __name__=="__main__":
     
-    business_dta = pd.read_csv("yelp_dataset/yelp_businesses_new.csv")
+    business_dta = pd.read_csv("./cappyfoodies/data/yelp_businesses.csv")
     new_dta = business_cleaner(business_dta)
     df_to_csv(new_dta, "business_cleaned.csv")
