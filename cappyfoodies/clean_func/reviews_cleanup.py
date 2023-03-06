@@ -126,7 +126,7 @@ if __name__ == "__main__":
     address = "yelp_dataset/uncleaned_yelp_reviews_new.json"
     review_dta = read_review_json(address)
     cleaned_new_dta = review_cleaner(review_dta)
-    filename = "cleaned_review_V2.json"
+    filename = "cleaned_review.json"
     export_to_json(cleaned_new_dta, filename)
 
 
