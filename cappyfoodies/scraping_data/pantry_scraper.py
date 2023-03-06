@@ -1,3 +1,6 @@
+'''
+Written by: Maxine Xu
+'''
 import requests
 import lxml.html
 import pandas as pd

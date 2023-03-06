@@ -1,3 +1,6 @@
+'''
+Written by: Maxine Xu
+'''
 import requests
 from .yelp_api import API_KEY, BUS_ENDPOINT, HEADERS
 

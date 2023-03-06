@@ -18,18 +18,21 @@ def run_dashboard():
 def run_pantry_scraper(): 
     """
     Running Pantry Scraper
+    Written by: Maxine Xu
     """
     return food_pantry_tbl()
 
 def run_api_simulation():
     """
     Running Yelp API Simulation
+    Written by: Maxine Xu
     """
     return yelp_simul()
 
 def run_yelp_reviews():
     """
     Gather reviews for Cook County restaurants
+    Written by: Maxine Xu
     """
     get_businesses()
     return get_reviews()
