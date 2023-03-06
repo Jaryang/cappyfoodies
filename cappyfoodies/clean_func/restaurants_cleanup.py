@@ -154,4 +154,4 @@ if __name__=="__main__":
     
     business_dta = pd.read_csv("yelp_dataset/yelp_businesses_new.csv")
     new_dta = business_cleaner(business_dta)
-    df_to_csv(new_dta, "business_cleaned_v3.csv")
+    df_to_csv(new_dta, "business_cleaned.csv")
