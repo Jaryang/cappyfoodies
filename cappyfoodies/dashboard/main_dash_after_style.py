@@ -16,6 +16,14 @@ import base64
 from nltk.corpus import stopwords
 import pathlib
 
+'''
+Code contributor:
+All related to demographic data: Miao Li
+All related to word cload: Jariel Yang
+Style: Yueyue Wang & Jariel Yang
+Everything else: Yueyue Wang
+'''
+
 res_label = pathlib.Path(__file__).parent / "../cleaned_data/res_label.csv"
 pantry_data = pathlib.Path(__file__).parent / "../cleaned_data/pantry_data.csv"
 res_riskiness = pathlib.Path(__file__).parent / "../cleaned_data/risk_cleaned.csv"
@@ -245,8 +253,8 @@ header_and_intro = html.Div([html.H1(children='Food Security and Accessibility i
                                 style={'textAlign': 'center','color': colors['text']}),
                         html.Div(children='''This project focuses on a variety of topics related to food accessibility and food options in Cook County, 
                                 Illinois, including health risk level and review of restaurants, access to free food pantry, restaurants’ category, as well as 
-                                related regional demographic information. This project aims to give a general description of [aim] meeting residents' demand 
-                                for food, clean food, and food of the quality and category they desire. ''',
+                                related regional demographic information. This project aims to give a general description and raise awareness of 
+                                how Cook County is meeting residents' demand for food, clean food, and food of the quality and category they desire. ''',
                                 style={'textAlign': 'left','color': colors['text'],'width' : '100%','padding' :5})])
 
 security_map = html.Div([html.H2(children='Food Security in Cook County',style={'textAlign': 'center','color': colors['text']}),
