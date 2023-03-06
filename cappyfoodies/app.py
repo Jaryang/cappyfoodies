@@ -13,7 +13,7 @@ def run_dashboard():
     Running dashboard
     """
     app = main_dash_after_style.app
-    app.run_server(debug=False)
+    app.run_server(debug=False, port = 8051)
 
 def run_pantry_scraper(): 
     """
