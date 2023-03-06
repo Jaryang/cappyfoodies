@@ -118,7 +118,7 @@ def plot_wordcloud(token_freq):
     Outputs: a word cloud picture
     """
     
-    plate_mask = np.array(Image.open("plate2.jpeg"))
+    plate_mask = np.array(Image.open("./cappyfoodies/data/plate2.jpeg"))
     wc = WordCloud(background_color='white', 
                    width=40, 
                    height=30, 
