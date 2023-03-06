@@ -414,7 +414,7 @@ def update_figure(selected_zipcode):
     
     fig = px.bar(row, x = "Race", y = 'Percentage')
     
-    fig.update_layout(transition_duration=500)
+    fig.update_layout(transition_duration=500, plot_bgcolor='#FDF5E6')
 
     return fig
 
