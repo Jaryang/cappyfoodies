@@ -71,7 +71,8 @@ def tokenize(text):
     new_tokens = []
     
     for token in tokens:
-        if (token not in punctuations) and (token.lower() not in stop_words)            and (re.match(r"\d+", token) == None):
+        if (token not in punctuations) and (token.lower() not in stop_words)\
+            and (re.match(r"\d+", token) == None):
                 new_tokens.append(token.lower())
     
     return new_tokens
@@ -113,8 +114,7 @@ def export_to_json(review_dta, filename):
         review_dta: a dictionary containing the cleaned review data
         filename(str): filename of the output json file
     """
-    address = 'yelp_dataset/cleaned_data'
-    os.makedirs(address, exist_ok=True)
+    address = './cappyfoodies/cleaned_data'
     file_path = address + "/" + filename
     
     with open(file_path, "w") as f:
@@ -123,7 +123,7 @@ def export_to_json(review_dta, filename):
 
 if __name__ == "__main__":
     
-    address = "yelp_dataset/uncleaned_yelp_reviews_new.json"
+    address = "./cappyfoodies/data/uncleaned_yelp_reviews.json"
     review_dta = read_review_json(address)
     cleaned_new_dta = review_cleaner(review_dta)
     filename = "cleaned_review.json"
