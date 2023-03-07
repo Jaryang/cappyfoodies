@@ -79,12 +79,12 @@ def clean_income(filename):
 
 def find_top_race(data, top_num):
     '''
-    Finding the most frequent categories in a dataset, return a \
+    Finding the most frequent categories in a dataset, return a 
         dictionary with a list of those categories
     
     Input:
-        data: the dataset to count
-        top_num: the number of top category to keep
+        data (dictionary): the dataset to count
+        top_num (int): the number of top category to keep
 
     Output:
         top_dict(dictionary): with the region as key and category list as value
@@ -215,18 +215,22 @@ def clean_rest(filename):
     
     counter = {}
 
-    #counting the number of restaurants of each category
+    #counting the number of restaurants of each category in each zipcode
     for restaurant in data:
+
         cat_lst = eval(restaurant['categories'])
         zipcode = restaurant['zip_code']
+
         if zipcode not in counter:
             counter[zipcode] ={}
+
         new_category = relabel(cat_lst)
         restaurant['new_labels'] = new_category
+
         for type in new_category:
             counter[zipcode][type] = counter[zipcode].get(type, 0) + 1
 
-    #Find the top 3 most common category to visualize
+    #Find the top 3 most common category in each zip code to visualize
     top_3_food = {}
 
     for key, value in counter.items():
@@ -247,7 +251,6 @@ def clean_rest(filename):
         if i == 0:
             for head in rest:
                 headers.append(head)
-
 
     with open('./cappyfoodies/cleaned_data/res_label.csv', 'w', newline = "") as csv_file:  
         writer = csv.DictWriter(csv_file, fieldnames=headers)

@@ -19,7 +19,9 @@ import pathlib
 '''
 Code contributor:
 Yueyue Wang: reading file, 
-All related to demographic data: Miao Li
+Miao Li: 
+    All related to demographic data
+    bar_plot; update_barplot;update_out_food, update_out_edu, update_out_inc
 All related to word cload: Jariel Yang
 Style: Yueyue Wang & Jariel Yang
 Everything else: Yueyue Wang
@@ -55,7 +57,7 @@ def map_zipcode_with_id(dataset):
     a list of corresponding ids.
     
     Inputs:
-        dataset: a pandas,DataFrame
+        dataset: a pandas DataFrame
     Outputs:
         zipcode_dict: a dictionary
     """
@@ -105,7 +107,6 @@ def gene_token_freq(token_lst):
     Outputs:
         token_freq: a dictionary
     """
-    
     token_freq = dict()
     
     for token in token_lst:
@@ -141,20 +142,6 @@ zipcode_dict = map_zipcode_with_id(business_dta)
 zipcode_tokens = cluster_tokens(zipcode_dict, review_dta)
 
 #functions in order to make bar chart
-df = demo_data.iloc[0:1]
-race_info = eval(df['top_race'].tolist()[0])
-race_lst = []
-perc_lst = []
-
-for tuple in race_info:
-    race, perc = tuple
-    race_lst.append(race)
-    perc_lst.append(perc)
-
-data = {'Race': race_lst,
-        'Percentage': perc_lst}
-df = pd.DataFrame(data)
-
 def bar_plot(zipcode,demo_data):
     '''
     Taking in the demographic info of a zipcode and return the bar plot
@@ -165,7 +152,7 @@ def bar_plot(zipcode,demo_data):
     Output:
         figure
     '''
-    row = demo_data.loc[demo_data['NAME'] == zipcode] #change the type to str
+    row = demo_data.loc[demo_data['NAME'] == zipcode] 
     race_info = eval(row['top_race'].tolist()[0])
     race_lst = []
     perc_lst = []
@@ -405,7 +392,7 @@ def update_figure(selected_option, slider_value):
         Input(component_id="zipcode-dropdown", component_property='value')
         )
     
-def update_figure(selected_zipcode):
+def update_barplot(selected_zipcode):
     row = demo_data.loc[demo_data['NAME'] == selected_zipcode] #change the type to str
     race_info = eval(row['top_race'].tolist()[0])
     race_lst = []

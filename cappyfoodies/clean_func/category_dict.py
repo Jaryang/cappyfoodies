@@ -1,3 +1,7 @@
+'''
+a dictionary to map the category of restaurants
+code contributor: Miao Li
+'''
 cate_dct = {
     'Bakeries' : ["Bakeries", "Piadina", "Pretzels", "Bagels", 'Patisserie/Cake Shop'],
     'Alcohol' : ['Cocktail Bars','Brewpubs','Beer Bar','Whiskey Bars','Wine Bars','Beer, Wine & Spirits', 'Pubs', 'Bars','Dive Bars', \
