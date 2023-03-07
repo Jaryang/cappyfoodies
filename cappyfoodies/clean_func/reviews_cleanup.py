@@ -4,6 +4,8 @@ import string
 import re
 import nltk
 import ssl
+# Thanks for the answer from Stackoverflow for inspiring the solution of solving downloading issues of nltk
+# link: https://stackoverflow.com/questions/38916452/nltk-download-ssl-certificate-verify-failed
 try:
      _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
