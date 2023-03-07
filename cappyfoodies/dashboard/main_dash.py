@@ -6,7 +6,9 @@ Yueyue Wang:
 Miao Li: 
     All related to demographic data
     bar_plot; update_barplot; update_out_food, update_out_edu, update_out_inc
-All related to word cload: Jariel Yang
+Jariel Yang:
+    All related to word cloud
+    map_zipcode_with_id; cluster_tokens; gene_token_freq; plot_wordcloud; make_image
 Style: Yueyue Wang & Jariel Yang
 Everything else: Yueyue Wang
 '''
@@ -52,7 +54,7 @@ with open(boundaries) as f:
 # Merge restaurant and risk data
 merged_restaurant = pd.merge(df_restaurants_yelp, df_foodrisk_byzip, left_on='zip_code', right_on='NAME')
 
-
+#functions for word cloud
 def map_zipcode_with_id(dataset):
     """
     Compuate a dictionary where the key is the zip code and the value is 
@@ -139,7 +141,6 @@ def plot_wordcloud(token_freq):
     
     return wc.to_image()
 
-#functions for word cloud
 zipcode_dict = map_zipcode_with_id(business_dta)
 zipcode_tokens = cluster_tokens(zipcode_dict, review_dta)
 
