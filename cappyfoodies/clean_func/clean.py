@@ -8,7 +8,10 @@ Code contributor: Miao Li
 
 def clean_edu(filename):
     '''
-    take in the education data downloaded from census bureau and clean it
+    take in the education data downloaded from census bureau and clean it,
+    then calculate the percentage of people above 25 years old who has a
+    bachelor degree or above
+    
     Input:
         filename (string)
     
@@ -32,6 +35,7 @@ def clean_edu(filename):
 def clean_foodstamp(filename):
     '''
     take in the food stamp data downloaded from census bureau and clean it
+    then calculate the percentage of households that qualify for food stamp
     Input:
         filename (string)
     
@@ -53,7 +57,8 @@ def clean_foodstamp(filename):
 
 def clean_income(filename):
     '''
-    take in the income data downloaded from census bureau and clean it
+    take in the income data downloaded from census bureau and find house income
+    
     Input:
         filename (string)
     
@@ -90,11 +95,13 @@ def find_top_race(data, top_num):
     '''
     top_dict = {}
     
+    #sorting to find the most frequent ones
     for key, value in data.items():
         if key == 'Label':
             continue
         lst = sorted(range(len(value)), key=lambda i: value[i])[-(top_num + 1):]
 
+        #matching the label with the percentage number
         label = data['Label']
         val_lst = []
         for x in lst[: : -1]:
@@ -177,6 +184,7 @@ def find_cat(cat_lst, new_cat):
     '''
     Categorize the restaurants based on new category, if category in new_cat, 
     return the most common one; if not, return 'other'
+    
     Input:
         cat_lst: old category from Yelp
         new_cat: new list generated from relabel
