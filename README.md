@@ -6,7 +6,6 @@ According to the United States Department of Agriculture, food insecurity is “
 
 Food Access (Proximity to food)\
 Food Quality \
-Food Price\
 Food Type\
 Restaurant Cleanliness\
 Socioeconomic Factors
