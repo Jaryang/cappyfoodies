@@ -9,7 +9,7 @@ Miao Li:
 Jariel Yang:
     All related to word cloud
     map_zipcode_with_id; cluster_tokens; gene_token_freq; plot_wordcloud; make_image
-Style: Yueyue Wang & Jariel Yang
+Style and layout: Yueyue Wang & Jariel Yang
 Everything else: Yueyue Wang
 '''
 
