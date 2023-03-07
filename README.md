@@ -32,7 +32,7 @@ base64\
 nltk\
 pathlib
 
-###Data Source
+### Data Source
 
 (1) Yelp API:\
 Source: Yelp.com\
@@ -41,44 +41,44 @@ Members responsible: Maxine and Jariel
 
 (2) Emergency Food Pantries:\
 Source: Cook County’s Sheriff's Office \
-(https://www.cookcountysheriff.org/departments/courts/civil-services/evictions/social-services/emergency-food-pantries/)\
-Way of Collection: Web-scraping\
+(https://www.cookcountysheriff.org/departments/courts/civil-services/evictions/social-services/emergency-food-pantries/) \
+Way of Collection: Web-scraping \
 Members responsible: Maxine
 
 (3)Education Data:\
 Source: US Census Bureau \
-(https://data.census.gov/table?t=Educational+Attainment&g=0500000US17031$8600000)\
+(https://data.census.gov/table?t=Educational+Attainment&g=0500000US17031$8600000) \
 Way of Collection:  Directly downloaded the CSV\
 Members responsible: Miao 
 
 (4) Food Stamp Data:\
 Source: US Census Bureau \
-(https://data.census.gov/table?t=SNAP/Food+Stamps&g=0500000US17031$8600000)\
+(https://data.census.gov/table?t=SNAP/Food+Stamps&g=0500000US17031$8600000) \
 Way of Collection:  Directly downloaded the CSV\
 Members responsible: Miao
 
 (5) Income Data:\
 Source: US Census Bureau \
-(https://data.census.gov/table?t=Earnings (Individuals):Income(Households,+Families,+Individuals):Income+and+Earnings:SNAP/Food+Stamps&g=0500000US17031$8600000)\
+(https://data.census.gov/table?t=Earnings (Individuals):Income(Households,+Families,+Individuals):Income+and+Earnings:SNAP/Food+Stamps&g=0500000US17031$8600000) \
 Way of Collection:  Directly downloaded the CSV\
 Members responsible: Miao
 
 (6) Race Data:\
 Source: US Census Bureau \
-(https://data.census.gov/table?t=Populations+and+People&g=0500000US17031$8600000&tid=ACSDP5Y2021.DP05)\
-Way of Collection: Directly downloaded the CSV\
+(https://data.census.gov/table?t=Populations+and+People&g=0500000US17031$8600000&tid=ACSDP5Y2021.DP05) \
+Way of Collection: Directly downloaded the CSV \
 Members responsible: Miao
 
 (7) Restaurant by zipcode:\
 Souce: Chicago open data portal \
-(https://data.cityofchicago.org/Health-Human-Services/Restaurant/5udb-dr6f/data)\
-Way of Collection: Directly downloaded the CSV\
+(https://data.cityofchicago.org/Health-Human-Services/Restaurant/5udb-dr6f/data) \
+Way of Collection: Directly downloaded the CSV \
 Members responsible: Miao
 
 (8) Cook County Boundary geojson file:\
 Souce: Cook county government\
-( https://www.cookcountyil.gov/CookCentral )\
-Way of Collection: Directly downloaded the geojson\
+(https://www.cookcountyil.gov/CookCentral) \
+Way of Collection: Directly downloaded the geojson \
 Members responsible: Yueyue 
 
 # Steps to launch the application
