@@ -10,7 +10,7 @@ def run_dashboard():
     """
     Running dashboard
     """
-    app = main_dash_after_style.app
+    app = main_dash.app
     app.run_server(debug=False)
 
 def run_pantry_scraper(): 
