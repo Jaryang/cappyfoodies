@@ -55,14 +55,14 @@ def run_clean():
 
 def run():
     """
-    User type some arguments and we run a program
+    User enter an option and interact with the program
     """
     print("Welcome to Cook County Food Accessibility and Security App!")
     user_input = input(
         """Please Enter: 
-                (1) For Dashboard, 
-                (2) For Data Cleaning, 
-                (3) For Scraping Data and API Interaction
+                (1) The Dashboard, 
+                (2) Data Cleaning, 
+                (3) Scraping Data and API Interaction
                 (4) Quit App.
                 Option: """)
     if user_input == "1":
@@ -79,6 +79,7 @@ def run():
                 (3) Gather the full dataset of reviews for restaurants
                 in Cook County using Yelp's API, or
                 (4) Or anything else for quit program.
+                (Once entering the option 1 or 3, scraped dataset will be downloaded in the current repository)
                 Option: """)
         if getdata_user_input == "1":
             print("Scraping data...")
