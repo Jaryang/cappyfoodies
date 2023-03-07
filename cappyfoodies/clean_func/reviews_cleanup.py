@@ -1,3 +1,4 @@
+# This reviews_cleanup.py file was written by Jariel Yang
 import json
 import string
 import re
@@ -113,20 +114,29 @@ def export_to_json(review_dta, filename):
         review_dta: a dictionary containing the cleaned review data
         filename(str): filename of the output json file
     """
+    
     address = './cappyfoodies/cleaned_data'
     file_path = address + "/" + filename
     
     with open(file_path, "w") as f:
         json.dump(review_dta, f)
-        
 
-if __name__ == "__main__":
+        
+def run_clean_reviews():
+    """
+    Run the entire cleaning of the review data and generate the cleaned data
+    """
     
     address = "./cappyfoodies/data/uncleaned_yelp_reviews.json"
     review_dta = read_review_json(address)
     cleaned_new_dta = review_cleaner(review_dta)
     filename = "cleaned_review.json"
     export_to_json(cleaned_new_dta, filename)
+        
+
+if __name__ == "__main__":
+    
+    run_clean_reviews()
 
 
 
