@@ -1,3 +1,4 @@
+# This restaurants_cleanup.py file was written by Jariel Yang
 import json
 import re
 import ast
@@ -145,11 +146,19 @@ def df_to_csv(dataset, filename):
     address = './cappyfoodies/cleaned_data'
     file_path = address + "/" + filename
     dataset.to_csv(file_path)
-    
-    
 
-if __name__=="__main__":
+
+def run_business_clean():
+    """
+    Run the cleaning of business data and generate the cleaned data
+    """
     
     business_dta = pd.read_csv("./cappyfoodies/data/yelp_businesses.csv")
     new_dta = business_cleaner(business_dta)
     df_to_csv(new_dta, "business_cleaned.csv")
+            
+            
+
+if __name__=="__main__":
+    
+    run_business_clean()
