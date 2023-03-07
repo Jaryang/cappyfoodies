@@ -420,7 +420,7 @@ def update_figure(selected_zipcode):
     
     row = pd.DataFrame(data)
     
-    fig = px.bar(row, x = "Race", y = 'Percentage')
+    fig = px.bar(row, x = "Race", y = 'Percentage', color_discrete_sequence = ['#2E8B57'])
     
     fig.update_layout(transition_duration=500, plot_bgcolor='#FDF5E6')
 
