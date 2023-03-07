@@ -93,7 +93,7 @@ def category_cleaner(dataset):
     
     # Load in a csv file containing labels related to food,
     # where "1" and "a" represent categories that are related to food
-    labels = pd.read_csv("yelp_dataset/label.csv")
+    labels = pd.read_csv("./cappyfoodies/data/label.csv")
     labels = labels[(labels["is_food"] == "1") | (labels["is_food"] == "a")]
     food_labels = labels["categories"]
     
