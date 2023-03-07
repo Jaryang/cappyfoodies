@@ -1,3 +1,8 @@
+"""
+Code contributor:
+Yueyue Wang: import, run_dashboard, run
+
+"""
 import sys
 from .dashboard import main_dash
 from .scraping_data.pantry_scraper import food_pantry_tbl
@@ -11,6 +16,7 @@ from .clean_func.reviews_cleanup import run_clean_reviews
 def run_dashboard():
     """
     Running dashboard
+    Written by Yueyue
     """
     app = main_dash.app
     app.run_server(debug=False)
