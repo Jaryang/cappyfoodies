@@ -109,6 +109,8 @@ def export_to_json(review_dta, filename):
         filename(str): filename of the output json file
     """
     
+    assert filename.endswith(".json"), "the format should be .json !"
+
     address = './cappyfoodies/cleaned_data'
     file_path = address + "/" + filename
     
