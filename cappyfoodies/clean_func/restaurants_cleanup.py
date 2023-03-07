@@ -17,7 +17,7 @@ def construct_location(dataset):
         dataset: pd.DataFrame
     """
     
-    def get_loc(loc_text, key):# Function used extract location from a dict-like string
+    def get_loc(loc_text, key):# Function used to extract location from a dict-like string
         
         loc_dict = ast.literal_eval(loc_text)
         
