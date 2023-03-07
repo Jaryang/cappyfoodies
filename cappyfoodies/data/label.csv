@@ -1,0 +1,357 @@
+,categories,is_food
+0,Bakeries,1
+1,Ice Cream & Frozen Yogurt,1
+2,Coffee Roasteries,1
+3,Sandwiches,1
+4,Coffee & Tea,1
+5,Juice Bars & Smoothies,1
+6,Mexican,1
+7,Burgers,1
+8,Fast Food,1
+9,Sports Bars,a
+10,Dive Bars,a
+11,Hot Dogs,1
+12,Tacos,1
+13,Delis,1
+14,Polish,1
+15,Pubs,1
+16,Food Trucks,1
+17,Cafes,1
+18,Airport Lounges,
+19,Italian,1
+20,Chinese,1
+21,Grocery,1
+22,Caterers,1
+23,American (Traditional),1
+24,Creperies,1
+25,Breakfast & Brunch,1
+26,Seafood,1
+27,Caribbean,1
+28,Latin American,1
+29,Venues & Event Spaces,
+30,Cocktail Bars,a
+31,Puerto Rican,1
+32,Salad,1
+33,Thai,1
+34,Jazz & Blues,
+35,Lounges,
+36,Music Venues,
+37,Pizza,1
+38,Desserts,1
+39,Soup,1
+40,Barbeque,1
+41,Bars,a
+42,Gastropubs,1
+43,Hotels,
+44,Custom Cakes,1
+45,Restaurants,1
+46,American (New),1
+47,Korean,1
+48,Sushi Bars,1
+49,Japanese,1
+50,Indian,1
+51,Modern European,1
+52,French,1
+53,Wine Bars,a
+54,Speakeasies,a
+55,Hot Pot,1
+56,Asian Fusion,1
+57,Steakhouses,1
+58,Mediterranean,1
+59,Middle Eastern,1
+60,Vegetarian,1
+61,Cooking Schools,
+62,Argentine,1
+63,Scandinavian,1
+64,Boat Tours,
+65,Donuts,1
+66,Imported Food,1
+67,Beer Gardens,a
+68,International Grocery,1
+69,Colombian,1
+70,Meat Shops,1
+71,Patisserie/Cake Shop,1
+72,Diners,1
+73,Greek,1
+74,Tex-Mex,1
+75,"Beer, Wine & Spirits",a
+76,Irish Pub,a
+77,Halal,1
+78,Cuban,1
+79,Performing Arts,
+80,Ramen,1
+81,Pasta Shops,1
+82,Beer Bar,a
+83,Pool Halls,
+84,Filipino,1
+85,Poke,1
+86,Bubble Tea,1
+87,Waffles,1
+88,Vegan,1
+89,Chicken Wings,1
+90,German,1
+91,Tapas/Small Plates,1
+92,Pan Asian,1
+93,Food Stands,1
+94,Brasseries,1
+95,Empanadas,1
+96,Parks,
+97,Nurseries & Gardening,
+98,Community Centers,
+99,Soul Food,1
+100,Salvadoran,1
+101,Food Delivery Services,1
+102,Museums,
+103,Tours,
+104,Gift Shops,
+105,Cupcakes,1
+106,Dominican,
+107,Candy Stores,c
+108,Chocolatiers & Shops,c
+109,Breweries,a
+110,Brazilian,1
+111,Venezuelan,1
+112,Cigar Bars,
+113,Honduran,1
+114,Community Service/Non-Profit,
+115,Vietnamese,1
+116,Comfort Food,1
+117,Spanish,1
+118,Noodles,1
+119,Wine Tasting Room,a
+120,Dance Clubs,
+121,Kosher,
+122,Portuguese,1
+123,Street Vendors,
+124,Karaoke,
+125,Specialty Food,1
+126,Fish & Chips,1
+127,Chicken Shop,1
+128,Comedy Clubs,
+129,Shaved Ice,c
+130,Gay Bars,a
+131,Art Galleries,
+132,Persian/Iranian,1
+133,Bed & Breakfast,
+134,Mini Golf,
+135,Cheesesteaks,1
+136,Distilleries,
+137,New Mexican Cuisine,1
+138,Pop-Up Restaurants,1
+139,Bikes,
+140,Sports Wear,
+141,Himalayan/Nepalese,1
+142,Tapas Bars,1
+143,Peruvian,1
+144,Izakaya,1
+145,Kids Activities,
+146,Fitness & Instruction,
+147,Spiritual Shop,
+148,Herbal Shops,
+149,Tea Rooms,1
+150,Hawaiian,1
+151,Whiskey Bars,a
+152,Bagels,1
+153,Gelato,1
+154,Cajun/Creole,1
+155,Buffets,1
+156,Social Clubs,
+157,Cabaret,
+158,Southern,1
+159,Beverage Store,1
+160,Seafood Markets,1
+161,Bookstores,
+162,Used Bookstore,
+163,Wraps,1
+164,Festivals,
+165,Internet Cafes,
+166,Gluten-Free,1
+167,African,1
+168,Arcades,
+169,Convenience Stores,1
+170,Gas Stations,
+171,Turkish,1
+172,Live/Raw Food,1
+173,Ethiopian,1
+174,Party & Event Planning,
+175,Fondue,1
+176,Pakistani,1
+177,Pop-up Shops,
+178,Food Court,1
+179,Taiwanese,1
+180,Szechuan,1
+181,Landmarks & Historical Buildings,
+182,Macarons,c
+183,Russian,1
+184,Ukrainian,1
+185,Czech,1
+186,Themed Cafes,1
+187,Falafel,1
+188,Somali,1
+189,Acai Bowls,1
+190,Lebanese,1
+191,Golf,
+192,Uzbek,1
+193,Bowling,
+194,Banks & Credit Unions,
+195,Kebab,1
+196,Supper Clubs,
+197,Pancakes,1
+198,Dim Sum,1
+199,Moroccan,1
+200,Mongolian,1
+201,Personal Chefs,1
+202,Senegalese,1
+203,Belgian,1
+204,Tobacco Shops,
+205,Hookah Bars,
+206,Smokehouse,
+207,Vape Shops,
+208,Afghan,1
+209,Armenian,1
+210,Flowers & Gifts,
+211,Wholesale Stores,
+212,Herbs & Spices,
+213,Malaysian,1
+214,Butcher,1
+215,Cheese Shops,1
+216,Dinner Theater,
+217,Teppanyaki,1
+218,Sports Clubs,
+219,Conveyor Belt Sushi,1
+220,Burmese,1
+221,Head Shops,
+222,Scottish,1
+223,Fruits & Veggies,1
+224,Cinema,
+225,Eritrean,1
+226,Meaderies,a
+227,Haitian,1
+228,Piano Bars,
+229,Georgian,1
+230,Cafeteria,1
+231,Singaporean,1
+232,Tabletop Games,
+233,Irish,1
+234,Cantonese,1
+235,Cooking Classes,
+236,South African,1
+237,Home Decor,
+238,Art Museums,
+239,Beer Tours,
+240,Organic Stores,1
+241,Tuscan,1
+242,Jewelry,
+243,Women's Clothing,
+244,Brewpubs,
+245,Pretzels,1
+246,Champagne Bars,a
+247,Wine Tasting Classes,a
+248,Arts & Entertainment,
+249,Nightlife,
+250,Local Flavor,
+251,British,
+252,Yelp Events,
+253,Syrian,1
+254,Music & DVDs,
+255,Kombucha,1
+256,Poutineries,1
+257,Eatertainment,
+258,Arabic,1
+259,Department Stores,
+260,Golf Equipment,
+261,Golf Lessons,
+262,Laotian,1
+263,Casinos,
+264,Popcorn Shops,1
+265,Batting Cages,
+266,Tiki Bars,
+267,Do-It-Yourself Food,1
+268,Wholesalers,
+269,Art Classes,
+270,Bocce Ball,
+271,Bulgarian,1
+272,French Southwest,1
+273,Food,1
+274,Food Tours,
+275,Wineries,a
+276,Car Wash,
+277,Delicatessen,
+278,Bistros,1
+279,Hotel bar,
+280,Signature Cuisine,1
+281,Traditional Swedish,1
+282,Active Life,
+283,Pilates,
+284,Public Art,
+285,Botanical Gardens,
+286,Hiking,
+287,Basketball Courts,
+288,Playgrounds,
+289,Aquariums,
+290,Pet Stores,
+291,Aquarium Services,
+292,Mountain Biking,
+293,Dog Parks,
+294,Bartenders,
+295,Education,
+296,Trinidadian,
+297,Physical Therapy,
+298,Boxing,
+299,Antiques,
+300,"Used, Vintage & Consignment",
+301,Races & Competitions,
+302,Vitamins & Supplements,
+303,Sicilian,1
+304,Beaches,
+305,Axe Throwing,
+306,Team Building Activities,
+307,Recreation Centers,
+308,Funeral Services & Cemeteries,
+309,Stonemasons,
+310,Traditional Chinese Medicine,
+311,Zoos,
+312,Health Markets,
+313,Bike Repair/Maintenance,
+314,Session Photography,
+315,Lakes,
+316,Skate Parks,
+317,Swimming Pools,
+318,Pet Services,
+319,Shared Office Spaces,
+320,Stadiums & Arenas,
+321,Fishing,
+322,Rafting/Kayaking,
+323,Visitor Centers,
+324,Skating Rinks,
+325,Counseling & Mental Health,
+326,Petting Zoos,
+327,Reptile Shops,
+328,Community Gardens,
+329,Health Coach,
+330,Historical Tours,
+331,Horseback Riding,
+332,Disc Golf,
+333,Beauty & Spas,
+334,Summer Camps,
+335,Pet Sitting,
+336,Dog Walkers,
+337,Australian,1
+338,Children's Museums,
+339,Architectural Tours,
+340,Alsatian,1
+341,Shanghainese,1
+342,Grill Services,1
+343,Boat Repair,
+344,Boating,
+345,Preschools,
+346,Country Clubs,
+347,Gardeners,
+348,Landscape Architects or Designers,
+349,Amusement Parks,
+350,Go Karts,
+351,Shipping Centers,
+352,Indonesian,1
+353,International,
+354,Outlet Stores,
+355,Cultural Center,
