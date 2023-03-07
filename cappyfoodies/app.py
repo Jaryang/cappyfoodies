@@ -77,6 +77,8 @@ def run():
             run_api_simulation()
         elif getdata_user_input == "3":
             print("Getting reviews...")
+            print("This process will likely take > 20 minutes") 
+            print("If you would like to test interacting with the API, exit, rerun the function, and choose option (2) Simulate interacting with Yelp's API")
             run_yelp_reviews()
         else:
             sys.exit()
