@@ -4,6 +4,8 @@ from .scraping_data.pantry_scraper import food_pantry_tbl
 from .scraping_data.yelp_simulation import yelp_simul
 from .scraping_data.yelp_api import get_businesses, get_reviews
 from .clean_func.gen_data import gen_data
+from .clean_func.restaurants_cleanup import run_business_clean
+from .clean_func.reviews_cleanup import run_clean_reviews
 
 
 def run_dashboard():
@@ -38,8 +40,11 @@ def run_yelp_reviews():
 def run_clean():
     """
     Clean datasets in the data directory
-    Written by: Miao Li
+    Written by: Miao Li "gen_data()"; 
+                Jariel Yang "run_business_clean() and run_clean_reviews()"
     """
+    run_business_clean()
+    run_clean_reviews()
     gen_data()
 
 def run():
