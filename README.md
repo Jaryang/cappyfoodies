@@ -107,13 +107,13 @@ python3 -m cappyfoodies
 
     (1) The Dashboard, \
     (2) Data Cleaning, \
-    (3) Download New Data (web scraping & API),\
+    (3) Scraping Data and API Interaction, \
     (4) Quit program.
 
 7. Option 3 has three sub-options. Users can input the number to interact with the API or do web scraping \
     (1) Scrape the list of emergency pantries from Cook County's Sheriff's Office, \
     (2) Simulate interacting with Yelp's API ,\
-    (3) Gather the full dataset of reviews for restaurants in Cook County using Yelp's API,\
-    (Once the option 1 or 3, scraped dataset will be downloaded in the current repository)
+    (3) Gather the full dataset of reviews for restaurants in Cook County using Yelp's API\
+    (Once the option 1 or 3, scraped dataset will be downloaded in the current repository).
 
 
