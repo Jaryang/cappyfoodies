@@ -156,7 +156,7 @@ def run_business_clean():
     business_dta = pd.read_csv("./cappyfoodies/data/yelp_businesses.csv")
     new_dta = business_cleaner(business_dta)
     df_to_csv(new_dta, "business_cleaned.csv")
-            
+    print("Restaurants data all cleaned !")
             
 
 if __name__=="__main__":
