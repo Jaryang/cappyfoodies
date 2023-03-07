@@ -3,22 +3,16 @@ import json
 import string
 import re
 import nltk
+import ssl
+try:
+     _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+nltk.download("stopwords")
+nltk.download("punkt")
 from nltk.corpus import stopwords
-# Note: relevant modules from nltk need to be pre-installed by the code 
-# as follows:
-# ---------------------------------------------------------------------
-# import nltk
-# import ssl
-# try:
-    # _create_unverified_https_context = ssl._create_unverified_context
-# except AttributeError:
-    # pass
-# else:
-    # ssl._create_default_https_context = _create_unverified_https_context
-
-# nltk.download("stopwords")
-# nltk.download("punkt")
-# ---------------------------------------------------------------------
 
 
 def read_review_json(address, hint = -1):
@@ -132,6 +126,7 @@ def run_clean_reviews():
     cleaned_new_dta = review_cleaner(review_dta)
     filename = "cleaned_review.json"
     export_to_json(cleaned_new_dta, filename)
+    print("Review data all cleaned !")
         
 
 if __name__ == "__main__":
