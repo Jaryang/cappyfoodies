@@ -1,3 +1,16 @@
+'''
+Code contributor:
+Yueyue Wang: 
+    All related to dash exccept bar plot and word cloud
+    reading file, Choropleth, dash, app callbacks
+Miao Li: 
+    All related to demographic data
+    bar_plot; update_barplot; update_out_food, update_out_edu, update_out_inc
+All related to word cload: Jariel Yang
+Style: Yueyue Wang & Jariel Yang
+Everything else: Yueyue Wang
+'''
+
 import pandas as pd
 import geojson
 import folium
@@ -15,17 +28,6 @@ from io import BytesIO
 import base64
 from nltk.corpus import stopwords
 import pathlib
-
-'''
-Code contributor:
-Yueyue Wang: reading file, 
-Miao Li: 
-    All related to demographic data
-    bar_plot; update_barplot;update_out_food, update_out_edu, update_out_inc
-All related to word cload: Jariel Yang
-Style: Yueyue Wang & Jariel Yang
-Everything else: Yueyue Wang
-'''
 
 res_label = pathlib.Path(__file__).parent / "../cleaned_data/res_label.csv"
 pantry_data = pathlib.Path(__file__).parent / "../cleaned_data/pantry_data.csv"
