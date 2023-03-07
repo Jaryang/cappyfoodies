@@ -61,7 +61,7 @@ python3 -m cappyfoodies
     (3) Download new data,\
     (4) Quit program.
 
-7. Option 3 has three sub-options. Users can input the number to interact with the App
+7. Option 3 has three sub-options. Users can input the number to interact with the App \
     (1) Scrape the list of emergency pantries from Cook County's Sheriff's Office,\
     (2) Simulate interacting with Yelp's API,\
     (3) Gather the full dataset of reviews for restaurants in Cook County using Yelp's API
