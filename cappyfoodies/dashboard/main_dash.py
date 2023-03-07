@@ -7,8 +7,8 @@ Miao Li:
     All related to demographic data
     bar_plot; update_barplot; update_out_food, update_out_edu, update_out_inc
 Jariel Yang:
-    All related to word cloud
-    map_zipcode_with_id; cluster_tokens; gene_token_freq; plot_wordcloud; make_image
+    All related to word cloud and dash final styling
+    map_zipcode_with_id; cluster_tokens; gene_token_freq; plot_wordcloud; make_image; app.layout
 Style and layout: Yueyue Wang & Jariel Yang
 Everything else: Yueyue Wang
 '''
