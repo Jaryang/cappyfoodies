@@ -1,5 +1,5 @@
 import sys
-from .dashboard import main_dash_after_style
+from .dashboard import main_dash
 from .scraping_data.pantry_scraper import food_pantry_tbl
 from .scraping_data.yelp_simulation import yelp_simul
 from .scraping_data.yelp_api import get_businesses, get_reviews
