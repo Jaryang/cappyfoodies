@@ -18,6 +18,7 @@ import pathlib
 
 '''
 Code contributor:
+Yueyue Wang: reading file, 
 All related to demographic data: Miao Li
 All related to word cload: Jariel Yang
 Style: Yueyue Wang & Jariel Yang

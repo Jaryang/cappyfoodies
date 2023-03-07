@@ -67,10 +67,11 @@ def run():
                 (2) Simulate interacting with Yelp's API,
                 (3) Gather the full dataset of reviews for restaurants
                 in Cook County using Yelp's API, or
-                (4) Or anything else for quit program.""")
+                (4) Or anything else for quit program.
+                Option: """)
         if getdata_user_input == "1":
             print("Scraping data...")
-            run_pantry_scraper()
+            print(run_pantry_scraper())
         elif getdata_user_input == "2":
             print("Starting Simulation...")
             run_api_simulation()
