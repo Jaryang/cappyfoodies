@@ -21,12 +21,10 @@ def gen_data():
     df_inc = clean.clean_income(income_data)
     df_race = clean.clean_pop(pop_data)
 
+    #merge the datasets
     df_1 = pd.merge(df_edu, df_inc, on = 'NAME', how = 'left')
-
     df_2 = pd.merge(df_1, df_fdstamp, on = 'NAME', how = 'left')
-
     df_2.drop_duplicates(subset=['NAME'], keep='first', inplace=True, ignore_index=True)
-
     df_3 = pd.concat([df_2, df_race], axis = 1)
     
     df_3.to_csv("./cappyfoodies/cleaned_data/demo_data.csv")

@@ -1,4 +1,3 @@
-import sys
 import pandas as pd
 import re
 import csv
@@ -177,7 +176,7 @@ def relabel(cat_lst):
 def find_cat(cat_lst, new_cat):
     '''
     Categorize the restaurants based on new category, if category in new_cat, 
-    return the most common one if not: return 'other'
+    return the most common one; if not, return 'other'
     Input:
         cat_lst: old category from Yelp
         new_cat: new list generated from relabel
@@ -258,3 +257,62 @@ def clean_rest(filename):
         for row in data:
             writer.writerow(row)
 
+def risk_category(entry):
+    '''
+    transform risk level from string to number
+
+    Input:
+        risk level (string)
+
+    output:
+        risk level (int)
+    '''
+    if entry == 'Risk 1 (High)':
+        return 1
+    
+    elif entry == 'Risk 2 (Medium)':
+        return 2
+    
+    else:
+        return 3
+
+def clean_risk(filename):
+    '''
+    Taking the restaurant riskness level data and calculate average risk
+    of restaurants in a certain zip code (this should be run with the 
+    Restaurant.csv file that is too large to put in github)
+
+    Input:
+        filename(string): the restaurant risk file to clean
+
+    Output: 
+        csv file: risk_cleaned.csv
+    '''
+    with open(filename) as f:
+        reader = csv.DictReader(f)
+        data = []
+        for row in reader:
+            data.append(row)
+    
+    #calculating the number of restaurant and sum of risk by zipcode
+    risk = {}
+    counter = {}
+    for restaurant in data:
+        if restaurant['Results'] == 'Out of Business':
+            continue
+        zipcode = str(restaurant['Zip'])
+        risk_r = risk_category(restaurant['Risk'])
+        risk[zipcode] = risk.get(zipcode,0) + risk_r
+        counter[zipcode] = counter.get(zipcode,0) + 1
+    
+    #convert to dataframe
+    df_1 = pd.DataFrame.from_dict(counter, orient = 'index',columns = ['num_rest'])
+    df_2 = pd.DataFrame.from_dict(risk, orient = 'index', columns = ['sum_risk'])
+    risk_df = df_1.join(df_2)
+
+    #calculating average risk
+    risk_df['avg_risk'] = risk_df['sum_risk']/risk_df['num_rest']
+    risk_df.index.name = 'NAME'
+    
+    risk_df.to_csv("./cappyfoodies/cleaned_data/risk_cleaned.csv")
+    
