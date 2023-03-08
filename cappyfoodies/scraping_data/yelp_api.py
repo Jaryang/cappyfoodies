@@ -247,7 +247,10 @@ def get_businesses(API_KEY):
     '''
     This function uses the Yelp Fusion API to get information about restaurants 
     at differing price points in Cook County.
-
+    
+    Inputs:
+       API_KEY (string): Yelp API key
+       
     Outputs (CSV file):
         yelp_businesses.csv, which is a CSV file that lists the restaurant in each 
          zipcode.
@@ -292,6 +295,7 @@ def get_reviews(bus_data, API_KEY):
 
     Inputs:
         bus_data (pandas DataFrame): DataFrame of businesses in Cook County
+        API_KEY (string): Yelp API key
 
     Outputs:
         final_dic: a dictionary with the key being the unique ID for each 
@@ -319,6 +323,9 @@ def write_reviews_file(API_KEY):
     '''
     This function combines the first two functions (gets restaurants and reviews
     in Cook County)
+        
+    Inputs:
+       API_KEY (string): Yelp API key
 
     Outputs:
         yelp_businesses.csv, which is a CSV file that lists the restaurant in each 
