@@ -2,13 +2,16 @@
 Written by: Maxine Xu
 '''
 import requests
-from .yelp_api import API_KEY, BUS_ENDPOINT, HEADERS
+from .yelp_api BUS_ENDPOINT, HEADERS
 
-def yelp_simul():
+def yelp_simul(key):
     '''
+    Input (string): 
+        Yelp API key
     This function simulates a call to Yelp Fusion's API to get a list of restaurants
     for an inputted location and the reviews for an inputted restaurant ID.
     '''
+    HEADERS = {'Authorization': 'bearer %s' % key}
     #Simulating getting businesses
     print("To get a list of restaurants that input your zipcode or your city:")
     print("")
