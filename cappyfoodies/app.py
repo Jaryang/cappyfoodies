@@ -21,27 +21,27 @@ def run_dashboard():
     app = main_dash.app
     app.run_server(debug=False)
 
-def run_pantry_scraper(): 
+def run_pantry_scraper(gmap_api_key): 
     """
     Running Pantry Scraper
     Written by: Maxine Xu
     """
-    return food_pantry_tbl()
+    return food_pantry_tbl(gmap_api_key)
 
-def run_api_simulation():
+def run_api_simulation(yelp_api_key):
     """
     Running Yelp API Simulation
     Written by: Maxine Xu
     """
-    return yelp_simul()
+    return yelp_simul(yelp_api_key)
 
-def run_yelp_reviews():
+def run_yelp_reviews(yelp_api_key):
     """
     Gather reviews for Cook County restaurants
     Written by: Maxine Xu
     """
-    restaurants = get_businesses()
-    yelp_reviews = get_reviews(restaurants)
+    restaurants = get_businesses(yelp_api_key)
+    yelp_reviews = get_reviews(restaurants, yelp_api_key)
     return yelp_reviews
 
 def run_clean():
@@ -82,20 +82,23 @@ def run():
                 (4) Or anything else for quit program.
                 Option: """)
         if getdata_user_input == "1":
+            gmap_key = input("Enter Google Map API key here:   ")
             print("Scraping data...")
             print("This will likely take a few minutes")
-            print(run_pantry_scraper())
+            print(run_pantry_scraper(gmap_key))
         elif getdata_user_input == "2":
+            yelp_key = input("Enter Yelp API key here:   ")
             print("Starting Simulation...")
-            run_api_simulation()
+            run_api_simulation(yelp_key)
         elif getdata_user_input == "3":
             print("Are you sure you would like to get the full dataset?")
             print("This process will likely take around 10-20 minutes")
             print("If you would like to test interacting with the API, exit, rerun the function, and choose option (2) Simulate interacting with Yelp's API")
             api_input = input("Enter Yes or No:  ")
             if api_input == "Yes":
+                yelp_key = input("Enter Yelp API key here:   ")
                 print("Getting reviews...")
-                print(run_yelp_reviews())
+                print(run_yelp_reviews(yelp_key))
             else:
                 sys.exit()
         else:
