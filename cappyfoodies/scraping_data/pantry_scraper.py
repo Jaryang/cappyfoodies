@@ -9,6 +9,9 @@ def food_pantry_tbl(GMAP_API_KEY):
     '''
     This function scrapes the Sheriff's Office's resource which lists the 
     emergency food pantries in Cook County.
+    
+    Inputs:
+        GMAP_API_KEY (string): Google Map API key
         
     Outputs:
         pantry_df (Pandas DataFrame): Dataframe of emergency food pantries and 
@@ -51,6 +54,7 @@ def lat_long(full_address, GMAP_API_KEY):
 
     Inputs:
          full_address (string): string of location's address 
+         GMAP_API_KEY (string): Google Map API key
 
     Outputs:
          lat, long (tuple): Tuple of the latitude and longitude
@@ -69,6 +73,9 @@ def lat_long(full_address, GMAP_API_KEY):
 def write_pantry_file(GMAP_API_KEY):
     '''
     This function writes the scraped data to a CSV file.
+    
+    Inputs:
+        GMAP_API_KEY (string): Google Map API key
     
     Outputs:
         pantry_data.csv, which is a CSV that lists the food pantries in Cook 
