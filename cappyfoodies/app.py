@@ -40,8 +40,9 @@ def run_yelp_reviews():
     Gather reviews for Cook County restaurants
     Written by: Maxine Xu
     """
-    get_businesses()
-    return get_reviews()
+    restaurants = get_businesses()
+    yelp_reviews = get_reviews(restaurants)
+    return yelp_reviews
 
 def run_clean():
     """
@@ -79,19 +80,24 @@ def run():
                 (3) Gather the full dataset of reviews for restaurants
                 in Cook County using Yelp's API, or
                 (4) Or anything else for quit program.
-                (Once entering the option 1 or 3, scraped dataset will be downloaded in the current repository)
                 Option: """)
         if getdata_user_input == "1":
             print("Scraping data...")
+            print("This will likely take a few minutes")
             print(run_pantry_scraper())
         elif getdata_user_input == "2":
             print("Starting Simulation...")
             run_api_simulation()
         elif getdata_user_input == "3":
-            print("Getting reviews...")
-            print("This process will likely take > 20 minutes") 
+            print("Are you sure you would like to get the full dataset?")
+            print("This process will likely take around 10-20 minutes")
             print("If you would like to test interacting with the API, exit, rerun the function, and choose option (2) Simulate interacting with Yelp's API")
-            run_yelp_reviews()
+            api_input = input("Yes or No")
+            if api_input == "Yes":
+                print("Getting reviews...")
+                run_yelp_reviews()
+            elif:
+                sys.exit()
         else:
             sys.exit()
 
