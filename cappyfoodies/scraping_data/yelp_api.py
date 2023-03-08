@@ -315,7 +315,7 @@ def get_reviews(bus_data):
             pass
     return final_dic
 
-def go():
+def write_reviews_file():
     '''
     This function combines the first two functions (gets restaurants and reviews
     in Cook County)
