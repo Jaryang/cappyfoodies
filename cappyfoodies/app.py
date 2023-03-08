@@ -92,7 +92,7 @@ def run():
             print("Are you sure you would like to get the full dataset?")
             print("This process will likely take around 10-20 minutes")
             print("If you would like to test interacting with the API, exit, rerun the function, and choose option (2) Simulate interacting with Yelp's API")
-            api_input = input("Yes or No")
+            api_input = input("Enter Yes or No:  ")
             if api_input == "Yes":
                 print("Getting reviews...")
                 run_yelp_reviews()
