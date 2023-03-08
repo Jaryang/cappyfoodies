@@ -5,9 +5,7 @@ import requests
 import lxml.html
 import pandas as pd
 
-GMAP_API_KEY = "AIzaSyAKL3FqXAhlQLArA5lURGYl2cv6OTvE0LM"
-
-def food_pantry_tbl():
+def food_pantry_tbl(GMAP_API_KEY):
     '''
     This function scrapes the Sheriff's Office's resource which lists the 
     emergency food pantries in Cook County.
@@ -41,12 +39,12 @@ def food_pantry_tbl():
 
     #Using helper function to get the longitude and latitude of each pantry
     pantry_df['Lat_Long'] = pantry_df.apply(lambda x: lat_long(
-        x['Full Address']), axis=1)
+        x['Full Address'], GMAP_API_KEY), axis=1)
     pantry_df[['Lat', 'Long']] = pd.DataFrame(pantry_df['Lat_Long'].tolist(),
      index=pantry_df.index)
     return pantry_df
 
-def lat_long(full_address):
+def lat_long(full_address, GMAP_API_KEY):
     '''
     This function uses the Google Maps API to get the longitude and latitude 
     of an address.
@@ -68,7 +66,7 @@ def lat_long(full_address):
         long = loc["location"]["lng"]
         return lat, long
     
-def write_pantry_file():
+def write_pantry_file(GMAP_API_KEY):
     '''
     This function writes the scraped data to a CSV file.
     
@@ -76,5 +74,5 @@ def write_pantry_file():
         pantry_data.csv, which is a CSV that lists the food pantries in Cook 
             County and the information in the above DataFrame
     '''
-    pantry_data = food_pantry_tbl()
+    pantry_data = food_pantry_tbl(GMAP_API_KEY)
     pantry_data.to_csv('pantry_data.csv')
