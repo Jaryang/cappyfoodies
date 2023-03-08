@@ -2,7 +2,7 @@
 Written by: Maxine Xu
 '''
 import requests
-from .yelp_api import BUS_ENDPOINT, HEADERS
+from .yelp_api import BUS_ENDPOINT
 
 def yelp_simul(key):
     '''
