@@ -95,7 +95,7 @@ def run():
             api_input = input("Enter Yes or No:  ")
             if api_input == "Yes":
                 print("Getting reviews...")
-                run_yelp_reviews()
+                print(run_yelp_reviews())
             else:
                 sys.exit()
         else:
