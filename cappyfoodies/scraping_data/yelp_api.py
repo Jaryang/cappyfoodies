@@ -237,15 +237,13 @@ cook_zip = ['60629',
  '60696',
  '60701']
 
-API_KEY = 'g5LKgbWTyQWTEkfnknhTvgtiDMUKzp7_0v9ofFnucn7Lheiq2hTFNn2H8JRSM--SBq5RaJaKVgRqZBrJsOnWsZFvaFTAq96ADWOY5Dany9m6n7AGIzfo4cMJNOnrY3Yx'
 BUS_ENDPOINT = 'https://api.yelp.com/v3/businesses/search'
-HEADERS = {'Authorization': 'bearer %s' % API_KEY}
 
 #Yelp labels each restaurant's price level with the following $, $$, $$$, or 
 #$$$$, which translates to 1,2,3,4 in their API
 price = [1,2,3,4]
 
-def get_businesses():
+def get_businesses(API_KEY):
     '''
     This function uses the Yelp Fusion API to get information about restaurants 
     at differing price points in Cook County.
@@ -255,6 +253,7 @@ def get_businesses():
          zipcode.
     '''
     business_data = []
+    HEADERS = {'Authorization': 'bearer %s' % API_KEY}
     #The Yelp Fusion's limit for calling businesses is 50, so in order to 
     #maximize the number of restaurants, we loop through each zipcode and each 
     #price level
@@ -286,7 +285,7 @@ def get_businesses():
     return business_data
 
 
-def get_reviews(bus_data):
+def get_reviews(bus_data, API_KEY):
     '''
     This function uses the Yelp Fusion API to get the reviews for restaurants 
     in Cook County 
@@ -299,6 +298,7 @@ def get_reviews(bus_data):
             restaurant and the values being the three reviews from Yelp's Fusion API
     '''
     final_dic = {}
+    HEADERS = {'Authorization': 'bearer %s' % API_KEY}
  
     #Looping through the list of business IDS and making a call to Yelp's API 
     #to get reviews for each restaurant
@@ -315,7 +315,7 @@ def get_reviews(bus_data):
             pass
     return final_dic
 
-def write_reviews_file():
+def write_reviews_file(API_KEY):
     '''
     This function combines the first two functions (gets restaurants and reviews
     in Cook County)
@@ -327,13 +327,13 @@ def write_reviews_file():
            within the above dictionary.
     '''
     #Getting businesses 
-    yelp_bus = get_businesses()
+    yelp_bus = get_businesses(API_KEY)
     
     #Writing businesses to CSV file 
     yelp_bus.to_csv('yelp_businesses.csv')
     
     #Getting reviews 
-    rev_dictionary = get_reviews(yelp_bus)
+    rev_dictionary = get_reviews(yelp_bus, API_KEY)
     
     #Wrting reviews to CSV file
     with open("uncleaned_yelp_reviews.json", "w") as outfile:
