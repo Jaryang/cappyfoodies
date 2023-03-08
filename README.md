@@ -114,7 +114,7 @@ python3 -m cappyfoodies
    Note: Since Yelp has a maximum number of 5,000 calls/day, run (2) before running (3) \
     (1) Scrape the list of emergency pantries from Cook County's Sheriff's Office, \
     (2) Simulate interacting with Yelp's API ,\
-    (3) Gather the full dataset of reviews for restaurants in Cook County using Yelp's API\
+    (3) Gather the full dataset of reviews for restaurants in Cook County using Yelp's API
 
 
 
