@@ -306,8 +306,11 @@ def get_reviews(bus_data):
     for business in bus_ids:
         REVIEWS_ENDPOINT = "https://api.yelp.com/v3/businesses/{}/reviews".format(business)
         response = requests.get(url=REVIEWS_ENDPOINT, headers = HEADERS)
+        
         try:
              final_dic[business] = response.json()['reviews']
+          
+        #If there are no reviews for the business, then pass
         except Exception:
             pass
     return final_dic
