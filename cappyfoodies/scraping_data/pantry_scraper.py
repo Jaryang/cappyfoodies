@@ -44,7 +44,6 @@ def food_pantry_tbl():
         x['Full Address']), axis=1)
     pantry_df[['Lat', 'Long']] = pd.DataFrame(pantry_df['Lat_Long'].tolist(),
      index=pantry_df.index)
-    pantry_df.to_csv('pantry_data.csv')
     return pantry_df
 
 def lat_long(full_address):
@@ -68,3 +67,14 @@ def lat_long(full_address):
         lat = loc["location"]["lat"]
         long = loc["location"]["lng"]
         return lat, long
+    
+def write_pantry_file():
+    '''
+    This function writes the scraped data to a CSV file.
+    
+    Outputs:
+        pantry_data.csv, which is a CSV that lists the food pantries in Cook 
+            County and the information in the above DataFrame
+    '''
+    pantry_data = food_pantry_tbl()
+    pantry_data.to_csv('pantry_data.csv')
