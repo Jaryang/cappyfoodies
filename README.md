@@ -121,5 +121,7 @@ python3 -m cappyfoodies
     (2) Simulate interacting with Yelp's API ,\
     (3) Gather the full dataset of reviews for restaurants in Cook County using Yelp's API
 
+### Dashboard Example
+<img width="543" alt="Screen Shot 2023-04-16 at 6 31 50 PM" src="https://user-images.githubusercontent.com/111720298/232349818-fb523756-7d86-4369-b9a2-5fe0d5df890e.png">
 
 
